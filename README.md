@@ -14,9 +14,9 @@
 
 <br>
 
-# portfolio_page
+# devs-PortfolioHub
 
-A social media website for devs by devs, built in Django. This project is part of the Digital Career Institute's FBW P22-E03 cohort.
+A portfolio hub for devs by devs, built in Django. This project is part of the Digital Career Institute's FBW P22-E03 cohort.
 
 <br>
 
