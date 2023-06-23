@@ -5,11 +5,11 @@
 </div>
 
 <div align="center">
-  <a href="#About">About</a>  |
-  <a href="#Prototype">Prototype</a>  |
-  <a href="#Setup">Setup</a>  |
-  <a href="#Technologies">Technologies</a>  |
-  <a href="#Authors">Authors</a>
+  <a href="#about">About</a>  |
+  <a href="#prototype">Prototype</a>  |
+  <a href="#setup">Setup</a>  |
+  <a href="#technologies-used">Technologies used</a>  |
+  <a href="#authors">Authors</a>
 </div>
 
 <br>
@@ -58,17 +58,19 @@ _How to install modules from requirements.txt._
 
 _Instructions on how to start up a Django project locally._
 
-## Technologies
+## Technologies Used
 
-_Tech stack used, i.e. Django, DRF, DB, React, Pandas, and so on._
+* Front-end: HTML, CSS, JavaScript, React
+* Back-end: Python, Django, Django Rest Framework, Docker, 
+* Documentation: DRF Spectacular, Swagger
+* Authentication: JSON Web Tokens (JWT)
 
 ## Authors
 
-_Links to GitHub and maybe also LinkedIn profiles._
-
 [Aljoscha Beiers](https://github.com/alj-b) 
 
-[Pawel Mazurkiewicz](https://github.com/Paul-Mazu) 
+[Pawel Mazurkiewicz](https://paul-mazu.github.io/portfolio/)  
+[LinkedIn](https://www.linkedin.com/in/pawel-mazurkiewicz-906877173/)
 
 [Christopher Odum](https://github.com/VirgSam) 
 
