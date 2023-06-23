@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # my
     "rest_framework",
     "rest_framework.authtoken",
+    "drf_spectacular",
     "user",
 ]
 
@@ -133,3 +134,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # use custom User from user app
 AUTH_USER_MODEL = "user.User"
+
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
