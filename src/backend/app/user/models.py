@@ -48,7 +48,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     xing_link = models.CharField(max_length=255, blank=True, null=True)
     whatsapp = models.CharField(max_length=255, blank=True, null=True)
     messenger = models.CharField(max_length=255, blank=True, null=True)
-    # tags = models.ManyToManyField("Tag", blank=True)
+    tag = models.ManyToManyField("Tag", blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
     objects = UserManager()
