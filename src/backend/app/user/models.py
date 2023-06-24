@@ -7,6 +7,15 @@ from django.contrib.auth.models import (
 )
 
 
+class Tag(models.Model):
+    name = models.CharField(max_length=25, primary_key=True)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"#{self.name} "
+
+
+
 class UserManager(BaseUserManager):
     """Manager for user"""
 
@@ -48,7 +57,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     xing_link = models.CharField(max_length=255, blank=True, null=True)
     whatsapp = models.CharField(max_length=255, blank=True, null=True)
     messenger = models.CharField(max_length=255, blank=True, null=True)
-    tag = models.ManyToManyField("Tag", blank=True)
+    tag = models.ManyToManyField(Tag, blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
     objects = UserManager()
