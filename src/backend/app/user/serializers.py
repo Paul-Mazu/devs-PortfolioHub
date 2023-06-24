@@ -2,8 +2,17 @@
 
 from django.contrib.auth import get_user_model, authenticate
 from rest_framework import serializers
+from project.models import Tag
 
 from django.utils.translation import gettext as _
+
+
+class TagSerializer(serializers.ModelSerializer):
+    """Serializer for the Tag model"""
+
+    class Meta:
+        model = Tag
+        fields = ["name", "created"]
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -33,7 +42,7 @@ class UserSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         """Create and return a user with encrypted password."""
         return get_user_model().objects.create_user(**validated_data)
-    
+
     def update(self, instance, validated_data):
         """Update and return data"""
         password = validated_data.pop("password", None)
@@ -42,7 +51,7 @@ class UserSerializer(serializers.ModelSerializer):
         if password:
             user.set_password(password)
             user.save()
-        
+
         return user
 
 
