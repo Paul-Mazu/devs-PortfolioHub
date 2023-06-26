@@ -1,11 +1,30 @@
 """Url mappings for the project API"""
 
-from django.urls import path
+# from django.urls import path
+# from project import api_views
+
+# app_name = "project"
+
+# urlpatterns = [
+#     path("projects/", api_views.ProjectList.as_view(), name="projects/"),
+#     path(
+#         "projects/<int:pk>",
+#         api_views.ProjectDetail.as_view(),
+#         name="project-detail",
+#     ),
+# ]
+
+########################### Pawels Solution ########################
+from django.urls import path, include
 from project import api_views
+from rest_framework.routers import DefaultRouter
 
-app_name = "project"
+router = DefaultRouter()
+router.register(
+    "my-projects", api_views.ProjectViewSetAuth, basename="my-projects"
+)
+router.register("projects", api_views.ProjectViewSet, basename="projects")
 
-urlpatterns = [
-    path("projects/", api_views.ProjectList.as_view(), name = "projects/"),
-    path("projects/<int:pk>", api_views.ProjectDetail.as_view(), name="project-detail"),
-]
+app_name = "recipe"
+
+urlpatterns = [path("", include(router.urls))]
