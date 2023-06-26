@@ -16,7 +16,9 @@ class Migration(migrations.Migration):
             fields=[
                 (
                     "name",
-                    models.CharField(max_length=25, primary_key=True, serialize=False),
+                    models.CharField(
+                        max_length=25, primary_key=True, serialize=False
+                    ),
                 ),
                 ("created", models.DateTimeField(auto_now_add=True)),
             ],
@@ -33,7 +35,10 @@ class Migration(migrations.Migration):
                         verbose_name="ID",
                     ),
                 ),
-                ("password", models.CharField(max_length=128, verbose_name="password")),
+                (
+                    "password",
+                    models.CharField(max_length=128, verbose_name="password"),
+                ),
                 (
                     "last_login",
                     models.DateTimeField(
@@ -52,12 +57,24 @@ class Migration(migrations.Migration):
                 ("name", models.CharField(max_length=255)),
                 ("is_active", models.BooleanField(default=True)),
                 ("is_staff", models.BooleanField(default=False)),
-                ("short_desc", models.CharField(blank=True, max_length=200, null=True)),
+                (
+                    "short_desc",
+                    models.CharField(blank=True, max_length=200, null=True),
+                ),
                 ("bio", models.TextField(blank=True, null=True)),
                 ("profile_image", models.ImageField(upload_to="profiles/")),
-                ("title", models.CharField(blank=True, max_length=50, null=True)),
-                ("address", models.CharField(blank=True, max_length=255, null=True)),
-                ("working_at", models.CharField(blank=True, max_length=255, null=True)),
+                (
+                    "title",
+                    models.CharField(blank=True, max_length=50, null=True),
+                ),
+                (
+                    "address",
+                    models.CharField(blank=True, max_length=255, null=True),
+                ),
+                (
+                    "working_at",
+                    models.CharField(blank=True, max_length=255, null=True),
+                ),
                 ("status_open_to_work", models.BooleanField(default=False)),
                 (
                     "github_link",
@@ -71,9 +88,18 @@ class Migration(migrations.Migration):
                     "website_link",
                     models.CharField(blank=True, max_length=255, null=True),
                 ),
-                ("xing_link", models.CharField(blank=True, max_length=255, null=True)),
-                ("whatsapp", models.CharField(blank=True, max_length=255, null=True)),
-                ("messenger", models.CharField(blank=True, max_length=255, null=True)),
+                (
+                    "xing_link",
+                    models.CharField(blank=True, max_length=255, null=True),
+                ),
+                (
+                    "whatsapp",
+                    models.CharField(blank=True, max_length=255, null=True),
+                ),
+                (
+                    "messenger",
+                    models.CharField(blank=True, max_length=255, null=True),
+                ),
                 ("created", models.DateTimeField(auto_now_add=True)),
                 (
                     "groups",

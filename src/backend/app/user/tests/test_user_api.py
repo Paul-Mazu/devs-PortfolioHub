@@ -15,7 +15,14 @@ ME_URL = reverse("user:me")
 
 def create_user(**params):
     """Create and return user"""
-    return get_user_model().objects.create_user(**params)
+    defaults = {
+        "email": "test@example.com",
+        "password": "testPass123",
+        "name": "name",
+    }
+    defaults.update(params)
+
+    return get_user_model().objects.create_user(**defaults)
 
 
 class PublicUserApiTests(TestCase):
@@ -116,6 +123,8 @@ class PublicUserApiTests(TestCase):
 
         self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
 
+    
+
 
 class PrivateUserApiTests(TestCase):
     """Test API requests that require authentication."""
@@ -140,7 +149,7 @@ class PrivateUserApiTests(TestCase):
 
     def test_me_not_allowed(self):
         """Test POST is not allowed for the endpoint"""
-        res = self.client.post(ME_URL,{})
+        res = self.client.post(ME_URL, {})
 
         self.assertEqual(res.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
 
@@ -153,10 +162,11 @@ class PrivateUserApiTests(TestCase):
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(self.user.name, payload["name"])
-        self.assertEqual(self.user.password, payload["password"])
+        self.assertTrue(self.user.check_password(payload["password"]))
 
-    def test_update_user_profile(self):
-        """Test updating the user profile for authenticated without password."""
+    def test_update_user_profile_without_code(self):
+        """Test updating the user profile
+        for authenticated without password."""
         payload = {"name": "Updated Name"}
 
         res = self.client.patch(ME_URL, payload)
@@ -164,4 +174,4 @@ class PrivateUserApiTests(TestCase):
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(self.user.name, payload["name"])
-        # self.assertEqual(self.user.password, "examplePass123")
+        self.assertTrue(self.user.check_password("examplePass123"))

@@ -8,12 +8,23 @@ from django.contrib.auth.models import (
 
 
 class Tag(models.Model):
-    name = models.CharField(max_length=25, primary_key=True)
+    TAG_CHOICES = (
+        ("python", "Python"),
+        ("java", "Java"),
+        ("javascript", "JavaScript"),
+        ("django", "Django"),
+        ("djangorestframework", "DjangoRestFramework"),
+        ("react", "React"),
+        ("api", "API"),
+    )
+
+    name = models.CharField(
+        max_length=25, primary_key=True, choices=TAG_CHOICES
+    )
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"#{self.name} "
-
 
 
 class UserManager(BaseUserManager):
