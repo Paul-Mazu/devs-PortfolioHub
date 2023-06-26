@@ -28,7 +28,7 @@
 #     queryset = Project.objects.all()
 #     serializer_class = ProjectSerializer
 
-################################# Pawels Version ################################
+################################# Pawels Version ################################ noqa
 
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
@@ -46,6 +46,10 @@ class ProjectViewSetAuth(viewsets.ModelViewSet):
     http_method_names = ["put", "post", "patch", "head"]
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+        """Create new project"""
+        serializer.save(author=self.request.user)
 
 
 class ProjectViewSet(viewsets.ReadOnlyModelViewSet):
