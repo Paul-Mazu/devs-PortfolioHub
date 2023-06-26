@@ -152,7 +152,7 @@ class PublicUserApiTests(TestCase):
         self.assertEqual(res.data, serializer.data)
 
 
-###################### Tests for authenticated ########################
+###################### Tests for authenticated ######################## noqa
 class PrivateUserApiTests(TestCase):
     """Test API requests that require authentication."""
 

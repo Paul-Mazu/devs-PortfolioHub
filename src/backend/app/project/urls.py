@@ -14,7 +14,7 @@
 #     ),
 # ]
 
-########################### Pawels Solution ########################
+########################### Pawels Solution ######################## noqa
 from django.urls import path, include
 from project import api_views
 from rest_framework.routers import DefaultRouter
