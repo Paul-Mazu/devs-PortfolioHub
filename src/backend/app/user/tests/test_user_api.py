@@ -7,10 +7,13 @@ from django.urls import reverse
 from rest_framework.test import APIClient
 from rest_framework import status
 
+from user.serializers import UserSerializer
+
 
 CREATE_USER_URL = reverse("user:create")
 TOKEN_URL = reverse("user:token")
 ME_URL = reverse("user:me")
+USERLIST_URL = reverse("user:user-list")
 
 
 def create_user(**params):
@@ -123,9 +126,33 @@ class PublicUserApiTests(TestCase):
 
         self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
 
-    
+    def test_retrieve_user_public(self):
+        """Test for list users"""
+        create_user()
+        create_user(email="test1@example.com")
+
+        res = self.client.get(USERLIST_URL)
+
+        users = get_user_model().objects.all()
+        serializer = UserSerializer(users, many=True)
+
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+        self.assertEqual(res.data, serializer.data)
+
+    def test_retrieve_user_detaileduser(self):
+        """Test for retrieving certain user"""
+        create_user()
+        USER_URL = reverse("user:user-detail", kwargs={"pk": 1})
+        res = self.client.get(USER_URL)
+
+        user = get_user_model().objects.get(pk=1)
+        serializer = UserSerializer(user)
+
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+        self.assertEqual(res.data, serializer.data)
 
 
+###################### Tests for authenticated ########################
 class PrivateUserApiTests(TestCase):
     """Test API requests that require authentication."""
 
