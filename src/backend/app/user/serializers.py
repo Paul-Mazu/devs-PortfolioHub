@@ -12,19 +12,23 @@ class TagSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Tag
-        fields = ["name", "created"]
+        fields = ["name"]
 
 
 class UserSerializer(serializers.ModelSerializer):
     """Serializer for the user object."""
 
+    tags = TagSerializer(many=True, required=False)
+
     class Meta:
         model = get_user_model()
         fields = [
+            "id",
             "email",
             "password",
             "name",
             "short_desc",
+            "tags",
             "bio",
             "title",
             "address",
@@ -37,11 +41,20 @@ class UserSerializer(serializers.ModelSerializer):
             "whatsapp",
             "messenger",
         ]
+        read_only_fields = ["id"]
+
         extra_kwargs = {"password": {"write_only": True, "min_length": 5}}
 
     def create(self, validated_data):
         """Create and return a user with encrypted password."""
-        return get_user_model().objects.create_user(**validated_data)
+        tags = validated_data.pop("tags", [])
+        user = get_user_model().objects.create_user(**validated_data)
+        for tag in tags:
+            tag_obj, _ = Tag.objects.get_or_create(
+                **tag,
+            )
+            user.tags.add(tag_obj)
+        return user
 
     def update(self, instance, validated_data):
         """Update and return data"""

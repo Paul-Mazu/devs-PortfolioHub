@@ -1,10 +1,17 @@
 """Tests for models.py"""
+from os import name
 from django.test import TestCase
 from django.contrib.auth import get_user_model
+from user.models import Tag
 
 
-class ModelTests(TestCase):
-    """Test Models"""
+def create_user(email="user@example.com", password="TestPass123"):
+    """Create and return user."""
+    return get_user_model().objects.create_user(email, password)
+
+
+class UserModelTests(TestCase):
+    """Test Models for user"""
 
     def test_create_user_with_email_successful(self):
         """Test for creating user with an email is successful"""
@@ -42,3 +49,15 @@ class ModelTests(TestCase):
         )
         self.assertTrue(user.is_superuser)
         self.assertTrue(user.is_staff)
+
+
+class TagModelTest(TestCase):
+    """Testsuit for Tag Model."""
+
+    def test_create_tag_successful(self):
+        """Test create tag successful"""
+        tag_name = "Python"
+        tag = Tag.objects.create(name=tag_name)
+
+        self.assertEqual(tag.name, tag_name)
+        self.assertEqual(str(tag), f"#{tag_name}")

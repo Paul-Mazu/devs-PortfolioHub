@@ -5,7 +5,8 @@ from user import api_views
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register('users', api_views.UserViewSet, basename='user')
+router.register("users", api_views.UserViewSet, basename="user")
+router.register("tags", api_views.TagViewSet, basename="tag")
 
 app_name = "user"
 

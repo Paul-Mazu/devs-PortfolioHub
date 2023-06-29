@@ -1,10 +1,16 @@
 """Views for the user api"""
-from rest_framework import generics, authentication, permissions
+from rest_framework import (
+    generics,
+    authentication,
+    permissions,
+    viewsets,
+    mixins,
+)
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.settings import api_settings
-from user.serializers import UserSerializer, AuthTokenSerializer
-from rest_framework import viewsets
+from user.serializers import UserSerializer, AuthTokenSerializer, TagSerializer
 from django.contrib.auth import get_user_model
+from .models import Tag
 
 
 class CreateUserView(generics.CreateAPIView):
@@ -37,3 +43,10 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
 
     serializer_class = UserSerializer
     queryset = get_user_model().objects.all()
+
+
+class TagViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
+    """Manage Tags in the database"""
+
+    serializer_class = TagSerializer
+    queryset = Tag.objects.all()
