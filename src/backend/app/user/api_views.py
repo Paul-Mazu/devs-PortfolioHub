@@ -45,8 +45,19 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = get_user_model().objects.all()
 
 
-class TagViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
+class TagViewSet(
+    mixins.DestroyModelMixin,
+    mixins.ListModelMixin,
+    viewsets.GenericViewSet,
+):
     """Manage Tags in the database"""
 
     serializer_class = TagSerializer
     queryset = Tag.objects.all()
+    authentication_classes = [authentication.TokenAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_permissions(self):
+        if self.action == "list":
+            return []
+        return super().get_permissions()
