@@ -43,8 +43,8 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "drf_spectacular",
-    "user",
-    "project",
+    "user.apps.UserConfig",
+    "project.apps.ProjectConfig",
 ]
 
 MIDDLEWARE = [
@@ -139,3 +139,5 @@ AUTH_USER_MODEL = "user.User"
 REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
+
+SPECTACULAR_SETTINGS = {"TITLE": "devs-PortfolioHub"}

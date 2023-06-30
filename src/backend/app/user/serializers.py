@@ -12,19 +12,23 @@ class TagSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Tag
-        fields = ["name", "created"]
+        fields = ["name"]
 
 
 class UserSerializer(serializers.ModelSerializer):
     """Serializer for the user object."""
 
+    tags = TagSerializer(many=True, required=False)
+
     class Meta:
         model = get_user_model()
         fields = [
+            "id",
             "email",
             "password",
             "name",
             "short_desc",
+            "tags",
             "bio",
             "title",
             "address",
@@ -37,20 +41,38 @@ class UserSerializer(serializers.ModelSerializer):
             "whatsapp",
             "messenger",
         ]
+        read_only_fields = ["id"]
+
         extra_kwargs = {"password": {"write_only": True, "min_length": 5}}
+
+    def _get_or_create_tags(self, tags, user):
+        """Handle getting or creating tags as needed"""
+        for tag in tags:
+            tag_obj, _ = Tag.objects.get_or_create(
+                **tag,
+            )
+            user.tags.add(tag_obj)
 
     def create(self, validated_data):
         """Create and return a user with encrypted password."""
-        return get_user_model().objects.create_user(**validated_data)
+        tags = validated_data.pop("tags", [])
+        user = get_user_model().objects.create_user(**validated_data)
+        self._get_or_create_tags(tags, user)
+        return user
 
     def update(self, instance, validated_data):
         """Update and return data"""
         password = validated_data.pop("password", None)
+        tags = validated_data.pop("tags", None)
         user = super().update(instance, validated_data)
 
         if password:
             user.set_password(password)
             user.save()
+
+        if tags is not None:
+            instance.tags.clear()
+            self._get_or_create_tags(tags, instance)
 
         return user
 

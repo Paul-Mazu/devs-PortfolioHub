@@ -25,6 +25,6 @@ router.register(
 )
 router.register("projects", api_views.ProjectViewSet, basename="projects")
 
-app_name = "recipe"
+app_name = "project"
 
 urlpatterns = [path("", include(router.urls))]

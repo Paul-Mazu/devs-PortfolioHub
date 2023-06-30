@@ -13,7 +13,7 @@ class Project(models.Model):
     )
     short_desc = models.CharField(max_length=255, blank=True, null=True)
     bio = models.TextField(blank=True, null=True)
-    tag = models.ManyToManyField(Tag, blank=True)
+    tags = models.ManyToManyField(Tag, blank=True)
     github_link = models.CharField(max_length=255, blank=True, null=True)
     website_link = models.CharField(max_length=255, blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
