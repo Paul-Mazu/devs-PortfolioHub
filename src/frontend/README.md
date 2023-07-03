@@ -4,7 +4,7 @@
 
 ### Downloading and Installing Node.js and npm:
 
-_Note: It is recommended to use a Node.jsn version manager, such as [nvm for OSX/Linux](https://github.com/nvm-sh/nvm) or [nvm for Windows](https://github.com/coreybutler/nvm-windows). See the [npm documentation](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)._
+_Note: It is recommended to use a Node.js version manager, such as [nvm for OSX/Linux](https://github.com/nvm-sh/nvm) or [nvm for Windows](https://github.com/coreybutler/nvm-windows). See the [npm documentation](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)._
 
 #### __Ubuntu__:
 
@@ -26,3 +26,15 @@ _Note: It is recommended to use a Node.jsn version manager, such as [nvm for OSX
         * <code>nvm ls</code> to list installed versions
         * <code>nvm run node --version</code> to run a specific Node.js version
     * check the [nvm documentation](https://github.com/nvm-sh/nvm#installing-and-updating) for further information
+
+This should also install npm (Node Package Manager) by default. You can keep npm updated by running <code>npm install -g npm</code>.
+
+### Downloading and Installing React.js:
+
+_Note: Ideally, simply install required dependencies, including React.js, from the_ package.json _file!_
+
+Using npm, we can easily download and install React.js. 
+
+To install React.js, simply run `npm -g install create-react-app`.
+
+To verify the successful installation of React.js, execute `create-react-app --version`.
