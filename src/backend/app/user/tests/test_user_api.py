@@ -1,5 +1,6 @@
 """Test suit for user APIs"""
 
+from genericpath import exists
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 from django.urls import reverse
@@ -8,6 +9,7 @@ from rest_framework.test import APIClient
 from rest_framework import status
 
 from user.serializers import UserSerializer
+from user.models import Tag
 
 
 CREATE_USER_URL = reverse("user:create")
@@ -151,6 +153,47 @@ class PublicUserApiTests(TestCase):
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(res.data, serializer.data)
 
+    def test_create_user_with_new_tags(self):
+        """Test if create new user with tags successful."""
+
+        payload = {
+            "email": "test@example.com",
+            "password": "testPass123",
+            "name": "name",
+            "tags": [{"name": "Django"}, {"name": "Python"}],
+        }
+        res = self.client.post(CREATE_USER_URL, payload, format="json")
+        user = get_user_model().objects.get(email=payload["email"])
+
+        self.assertEqual(res.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(user.tags.count(), 2)
+        for tag in payload["tags"]:
+            exists = user.tags.filter(name=tag["name"]).exists()
+            self.assertTrue(exists)
+
+    def test_create_user_with_existing_tags(self):
+        """Test creating user with existing tags."""
+
+        Tag.objects.create(name="Django")
+
+        payload = {
+            "email": "test@example.com",
+            "password": "testPass123",
+            "name": "name",
+            "tags": [
+                {"name": "Django"},
+                {"name": "Python"},
+                {"name": "React"},
+            ],
+        }
+        res = self.client.post(CREATE_USER_URL, payload, format="json")
+        user = get_user_model().objects.get(email=payload["email"])
+        tags = Tag.objects.all()
+
+        self.assertEqual(res.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(user.tags.count(), 3)
+        self.assertEqual(len(tags), 3)
+
 
 ###################### Tests for authenticated ######################## noqa
 class PrivateUserApiTests(TestCase):
@@ -202,3 +245,47 @@ class PrivateUserApiTests(TestCase):
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(self.user.name, payload["name"])
         self.assertTrue(self.user.check_password("examplePass123"))
+
+    def test_update_existing_tags_in_user(self):
+        """Test if possible to update tags field."""
+        payload = {
+            "tags": [
+                {"name": "Django"},
+                {"name": "Python"},
+                {"name": "React"},
+            ],
+        }
+
+        res = self.client.patch(ME_URL, payload, format="json")
+        self.user.refresh_from_db()
+        tags = Tag.objects.all()
+
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+
+        self.assertEqual(self.user.tags.count(), 3)
+        self.assertEqual(len(tags), 3)
+
+    def test_update_user_assign_existing_tags(self):
+        """Test if reassigning existing tags while update successful"""
+        payload1 = {
+            "tags": [
+                {"name": "Django"},
+                {"name": "Python"},
+                {"name": "React"},
+            ],
+        }
+        self.client.patch(ME_URL, payload1, format="json")
+        self.user.refresh_from_db()
+
+        payload2 = {
+            "tags": [
+                {"name": "DRF"},
+            ],
+        }
+        res = self.client.patch(ME_URL, payload2, format="json")
+        self.user.refresh_from_db()
+
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+        self.assertEqual(self.user.tags.count(), 1)
+        self.assertFalse(self.user.tags.filter(name="Django").exists())
+        self.assertTrue(self.user.tags.filter(name="DRF").exists())

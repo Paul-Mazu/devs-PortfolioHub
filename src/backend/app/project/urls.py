@@ -20,11 +20,14 @@ from project import api_views
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register(
-    "my-projects", api_views.ProjectViewSetAuth, basename="my-projects"
-)
+router.register("my-projects", api_views.ProjectViewSetAuth, basename="my-projects")
 router.register("projects", api_views.ProjectViewSet, basename="projects")
+router.register("my-comments", api_views.CommentViewSetAuth, basename="my-comments")
+router.register("comments", api_views.CommentViewSet, basename="comments")
 
-app_name = "recipe"
+app_name = "project"
 
-urlpatterns = [path("", include(router.urls))]
+urlpatterns = [
+    path("", include(router.urls)),
+]
+

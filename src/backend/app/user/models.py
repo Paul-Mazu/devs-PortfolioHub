@@ -1,4 +1,5 @@
 """User model"""
+from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import (
     AbstractBaseUser,
@@ -8,19 +9,11 @@ from django.contrib.auth.models import (
 
 
 class Tag(models.Model):
-    TAG_CHOICES = (
-        ("python", "Python"),
-        ("java", "Java"),
-        ("javascript", "JavaScript"),
-        ("django", "Django"),
-        ("djangorestframework", "DjangoRestFramework"),
-        ("react", "React"),
-        ("api", "API"),
-    )
-
-    name = models.CharField(
-        max_length=25, primary_key=True, choices=TAG_CHOICES
-    )
+    name = models.CharField(max_length=25)
+    # owner = models.ForeignKey(
+    #     settings.AUTH_USER_MODEL,
+    #     on_delete=models.CASCADE,
+    # )
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -32,6 +25,7 @@ class UserManager(BaseUserManager):
 
     def create_user(self, email, password=None, **extra_fields):
         """Create, save and return new user"""
+
         if not email:
             raise ValueError("User must have email address.")
         user = self.model(email=self.normalize_email(email), **extra_fields)
@@ -68,7 +62,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     xing_link = models.CharField(max_length=255, blank=True, null=True)
     whatsapp = models.CharField(max_length=255, blank=True, null=True)
     messenger = models.CharField(max_length=255, blank=True, null=True)
-    tag = models.ManyToManyField(Tag, blank=True)
+    tags = models.ManyToManyField(Tag, blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
     objects = UserManager()
