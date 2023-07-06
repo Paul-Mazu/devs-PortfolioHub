@@ -6,7 +6,7 @@ import "./Header.css";
 //      <div className="Header">
 //        <img className="logo" src={devhublogo} alt="logo" />
 //      </div>
- //   );
+//   );
 //}
 //<AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
 
@@ -24,6 +24,8 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import DeveloperList from "../DeveloperList/DeveloperList";
+import { Link, useLocation } from "react-router-dom";
 
 const pages = ["Developers", "Projects"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -102,10 +104,15 @@ function ResponsiveAppBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
+                
               {pages.map((page) => (
+                <a href='./developers'>
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign="center">
+                    {page}
+                  </Typography>
                 </MenuItem>
+                </a>
               ))}
             </Menu>
           </Box>
@@ -132,7 +139,7 @@ function ResponsiveAppBar() {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={DeveloperList}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page}
