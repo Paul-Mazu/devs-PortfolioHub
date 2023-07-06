@@ -2,6 +2,7 @@
 import './App.css';
 import ResponsiveAppBar from "./components/Header/Header";
 import ImgMediaCard from "./components/Card/Card";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -12,8 +13,9 @@ function App() {
         <br />
         <br />
         <ImgMediaCard />
-        <p></p>
+        <p className='discription'>Discover the best talents </p>
       </header>
+      <Footer/>
     </div>
   );
 }
