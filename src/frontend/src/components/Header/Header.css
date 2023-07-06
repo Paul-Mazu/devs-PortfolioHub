@@ -1,0 +1,8 @@
+.Header img {
+    width: 150px;
+    
+    box-shadow: 0 3px 3px 0;
+    border: 1px solid blue;
+   
+    border-radius: 50%;
+}
