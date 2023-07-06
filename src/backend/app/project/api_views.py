@@ -4,9 +4,9 @@ from rest_framework.exceptions import PermissionDenied
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 
-
 from .serializers import ProjectSerializer, CommentSerializer
 from .models import Project, Comment
+from .filters import ProjectFilter, CommentFilter
 
 
 class ProjectViewSetAuth(viewsets.ModelViewSet):
@@ -29,7 +29,7 @@ class ProjectViewSet(viewsets.ReadOnlyModelViewSet):
 
     serializer_class = ProjectSerializer
     queryset = Project.objects.all()
-
+    filterset_class = ProjectFilter
 
 
 class CommentViewSetAuth(viewsets.ModelViewSet):
@@ -37,7 +37,7 @@ class CommentViewSetAuth(viewsets.ModelViewSet):
 
     serializer_class = CommentSerializer
     queryset = Comment.objects.all()
-    http_method_names = ["get", "post","patch","delete"]
+    http_method_names = ["post","patch","delete"]
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
@@ -85,9 +85,11 @@ class CommentViewSetAuth(viewsets.ModelViewSet):
 
         return Response({"message": "Comment deleted"}, status=status.HTTP_204_NO_CONTENT)
 
-class CommentViewSet(viewsets.ModelViewSet):
+class CommentViewSet(viewsets.ReadOnlyModelViewSet):
     """ViewSet for listing or retrieving comments."""
 
     serializer_class = CommentSerializer
     queryset = Comment.objects.all()
+    filterset_class = CommentFilter
+ 
 
