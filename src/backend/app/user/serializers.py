@@ -19,6 +19,7 @@ class UserSerializer(serializers.ModelSerializer):
     """Serializer for the user object."""
 
     tags = TagSerializer(many=True, required=False)
+    # profile_image = UserImageSerializer(required=False)
 
     class Meta:
         model = get_user_model()
@@ -26,6 +27,7 @@ class UserSerializer(serializers.ModelSerializer):
             "id",
             "email",
             "password",
+            "profile_image",
             "name",
             "short_desc",
             "tags",

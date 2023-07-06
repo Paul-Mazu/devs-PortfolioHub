@@ -1,15 +1,15 @@
 """Test suit for project APIs"""
 from django.test import TestCase
 from django.urls import reverse
+import tempfile
 from django.contrib.auth import get_user_model
 from rest_framework.test import APIClient
 from rest_framework import status
 
 from project.models import Project
 from project.serializers import ProjectSerializer
-
-
-
+import os
+from PIL import Image
 
 
 # AUTH_URL = reverse("project:my-projects-list")
@@ -17,13 +17,13 @@ from project.serializers import ProjectSerializer
 
 
 project_data = {
-         "name": "Test Project",
-         "short_desc": "Test Description",
-         "bio": "Test Bio",
-         "github_link": "Test Github Link",
-         "website_link": "Test Website Link",
-     }
-        
+    "name": "Test Project",
+    "short_desc": "Test Description",
+    "bio": "Test Bio",
+    "github_link": "Test Github Link",
+    "website_link": "Test Website Link",
+}
+
 
 def create_user(**params):
     """Create and return user"""
@@ -39,8 +39,8 @@ def create_user(**params):
 
 class ProjectViewSetAuthTestCase(TestCase):
     """Test API requests that require authentication."""
-    
-    def setUp(self):        
+
+    def setUp(self):
         self.user = create_user(
             email="test@example.com",
             password="examplePass123",
@@ -71,26 +71,27 @@ class ProjectViewSetAuthTestCase(TestCase):
     #     response = self.client.get(reverse("project:projects-list"), kwargs={"pk":1})
     #     self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-
-        
     def test_create_project_authenticated(self):
         """Test creating Project"""
-           
-        response = self.client.post(reverse("project:my-projects-list"), project_data)
+
+        response = self.client.post(
+            reverse("project:my-projects-list"), project_data
+        )
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
     def test_update_project(self):
         """Test updating partially(patch) Project"""
-        
-        project = Project.objects.create(name="Test Project",
-                            author= self.user,
-                            short_desc="Test Description",
-                            bio="Test Bio",
-                            github_link="Test Github Link",
-                            website_link ="Test Website Link",
-                            )
-        updated_field = {"bio":"Update Bio"} 
-        URL = reverse("project:my-projects-detail", kwargs={"pk":1})
+
+        project = Project.objects.create(
+            name="Test Project",
+            author=self.user,
+            short_desc="Test Description",
+            bio="Test Bio",
+            github_link="Test Github Link",
+            website_link="Test Website Link",
+        )
+        updated_field = {"bio": "Update Bio"}
+        URL = reverse("project:my-projects-detail", kwargs={"pk": 1})
         response = self.client.patch(URL, updated_field)
         project.refresh_from_db()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -98,24 +99,28 @@ class ProjectViewSetAuthTestCase(TestCase):
 
     def test_update_project_all_fields(self):
         """Test updating completely(put) Project"""
-        project = Project.objects.create(name="Test Project",
-                            author= self.user,
-                            short_desc="Test Description",
-                            bio="Test Bio",
-                            github_link="Test Github Link",
-                            website_link ="Test Website Link",
-                            )
+        project = Project.objects.create(
+            name="Test Project",
+            author=self.user,
+            short_desc="Test Description",
+            bio="Test Bio",
+            github_link="Test Github Link",
+            website_link="Test Website Link",
+        )
         ### renamed updated_field to update_data
-        updated_data = {"name":"Test Project 2",
-                    "author": self.user,                            
-                    "short_desc":"Test Description 2",
-                    "bio":"Test Bio 2",
-                    "github_link":"Test Github Link 2",
-                    "website_link":"Test Website Link 2",
+        updated_data = {
+            "name": "Test Project 2",
+            "author": self.user,
+            "short_desc": "Test Description 2",
+            "bio": "Test Bio 2",
+            "github_link": "Test Github Link 2",
+            "website_link": "Test Website Link 2",
         }
-        URL = reverse("project:my-projects-detail", kwargs={"pk":1})
+        URL = reverse("project:my-projects-detail", kwargs={"pk": 1})
         response = self.client.put(URL, data=updated_data)
-        serializer = ProjectSerializer(project) #### changed :instead of updated_field, project
+        serializer = ProjectSerializer(
+            project
+        )  #### changed :instead of updated_field, project
         project.refresh_from_db()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data, serializer.data)
@@ -123,11 +128,6 @@ class ProjectViewSetAuthTestCase(TestCase):
     def test_head_request(self):
         response = self.client.head(reverse("project:my-projects-list"))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-
-
-
-
-
 
 
 ###################### Tests for unauthenticated ######################## noqa
@@ -140,32 +140,40 @@ class ProjectViewsetTestCase(TestCase):
             password="examplePass123",
             name="Test User",
         )
-        self.client = APIClient()           
- 
+        self.client = APIClient()
 
     def test_view_all_projects(self):
         """Testing viewing of projects"""
-        response = self.client.get(reverse("project:projects-list"), project_data)
+        response = self.client.get(
+            reverse("project:projects-list"), project_data
+        )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_view_specific_projects(self):
         """Testing retrieving specific project"""
         self.client.force_authenticate(user=self.user)
-        project = Project.objects.create(name="Test Project",
-                            author= self.user,
-                            short_desc="Test Description",
-                            bio="Test Bio",
-                            github_link="Test Github Link",
-                            website_link ="Test Website Link",
-                            )
+        project = Project.objects.create(
+            name="Test Project",
+            author=self.user,
+            short_desc="Test Description",
+            bio="Test Bio",
+            github_link="Test Github Link",
+            website_link="Test Website Link",
+        )
         self.client.logout()
-        response = self.client.get(reverse("project:projects-list"), kwargs={"pk":1})
+        response = self.client.get(
+            reverse("project:projects-list"), kwargs={"pk": 1}
+        )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_create_project_unauthenticated(self):
         """Testing unauthenticated create request"""
-        response = self.client.post(reverse("project:projects-list"), project_data)
-        self.assertEqual(response.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
+        response = self.client.post(
+            reverse("project:projects-list"), project_data
+        )
+        self.assertEqual(
+            response.status_code, status.HTTP_405_METHOD_NOT_ALLOWED
+        )
 
     def test_update_project_unauthenticated(self):
         """Testing unauthenticated updating of projects"""
@@ -178,9 +186,60 @@ class ProjectViewsetTestCase(TestCase):
         # #                     website_link ="Test Website Link",
         # #                     )
         # self.client.logout()
-        updated_field = {"name":"Update Name"} 
-        URL = reverse("project:projects-detail", kwargs={"pk":1})
+        updated_field = {"name": "Update Name"}
+        URL = reverse("project:projects-detail", kwargs={"pk": 1})
         response = self.client.patch(URL, updated_field)
-        self.assertEqual(response.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
+        self.assertEqual(
+            response.status_code, status.HTTP_405_METHOD_NOT_ALLOWED
+        )
 
-       
+
+class ImageUploadTests(TestCase):
+    """Test for image upload API"""
+
+    def setUp(self):
+        self.client = APIClient()
+        self.user = get_user_model().objects.create_user(
+            email="test@example.com",
+            password="examplePass123",
+            name="Test User",
+        )
+        self.client.force_authenticate(self.user)
+
+        self.project = Project.objects.create(
+            name="Test Project",
+            author=self.user,
+            short_desc="Test Description",
+            bio="Test Bio",
+            github_link="Test Github Link",
+            website_link="Test Website Link",
+        )
+        self.PROJECT_URL = reverse(
+            "project:my-projects-detail", kwargs={"pk": self.project.id}
+        )
+
+    def tearDown(self):
+        self.project.project_image.delete()
+
+    def test_upload_image(self):
+        """Test uploading an image to a project sucess"""
+        with tempfile.NamedTemporaryFile(suffix=".jpg") as image_file:
+            img = Image.new("RGB", (10, 10))
+            img.save(image_file, format="JPEG")
+            image_file.seek(0)
+            payload = {"project_image": image_file}
+            res = self.client.patch(
+                self.PROJECT_URL, payload, format="multipart"
+            )
+
+        self.user.refresh_from_db()
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+        self.assertIn("project_image", res.data)
+        # self.assertTrue(os.path.exists(self.project.project_image.path))
+
+    def test_upload_image_bad_request(self):
+        """Test uploading invalid image"""
+
+        payload = {"project_image": "notanimage"}
+        res = self.client.patch(self.PROJECT_URL, payload, format="multipart")
+        self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)

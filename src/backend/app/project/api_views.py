@@ -18,7 +18,6 @@ class ProjectViewSetAuth(viewsets.ModelViewSet):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
-
     def perform_create(self, serializer):
         """Create new project"""
         serializer.save(author=self.request.user)
@@ -31,13 +30,12 @@ class ProjectViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Project.objects.all()
 
 
-
 class CommentViewSetAuth(viewsets.ModelViewSet):
     """ViewSet for managing Comments."""
 
     serializer_class = CommentSerializer
     queryset = Comment.objects.all()
-    http_method_names = ["get", "post","patch","delete"]
+    http_method_names = ["get", "post", "patch", "delete"]
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
@@ -51,21 +49,21 @@ class CommentViewSetAuth(viewsets.ModelViewSet):
                 {"error": "You must be authenticated to create a comment."},
                 status=status.HTTP_401_UNAUTHORIZED,
             )
-            
 
     def update(self, request, *args, **kwargs):
         """Update a comment"""
         partial = kwargs.pop("partial", False)
         instance = self.get_object()
 
-        
         if instance.author != self.request.user:
             return Response(
                 {"error": "You are not allowed to update this comment."},
                 status=status.HTTP_403_FORBIDDEN,
             )
-        
-        serializer = self.get_serializer(instance, data=request.data, partial=partial)
+
+        serializer = self.get_serializer(
+            instance, data=request.data, partial=partial
+        )
         serializer.is_valid(raise_exception=True)
         self.perform_update(serializer)
 
@@ -83,11 +81,13 @@ class CommentViewSetAuth(viewsets.ModelViewSet):
 
         self.perform_destroy(instance)
 
-        return Response({"message": "Comment deleted"}, status=status.HTTP_204_NO_CONTENT)
+        return Response(
+            {"message": "Comment deleted"}, status=status.HTTP_204_NO_CONTENT
+        )
+
 
 class CommentViewSet(viewsets.ModelViewSet):
     """ViewSet for listing or retrieving comments."""
 
     serializer_class = CommentSerializer
     queryset = Comment.objects.all()
-
