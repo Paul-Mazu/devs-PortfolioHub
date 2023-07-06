@@ -6,18 +6,16 @@ from.models import Project, Comment
 
 class ProjectFilter(filters.FilterSet):
     """Filter Class for Project model"""
-    name = filters.CharFilter(field_name="name",lookup_expr="icontains") # icontains: case insensitive/ contains: case sensitive
+    name = filters.CharFilter(field_name="name",lookup_expr="icontains") 
     author = filters.CharFilter(field_name="author__name", lookup_expr="icontains")
     author_id = filters.NumberFilter(field_name= "author__id")
     tags = filters.CharFilter(field_name="tags__name", lookup_expr="icontains")
-    created = filters.DateFromToRangeFilter(widget=RangeWidget(attrs={"type":"date"}))# range widget
+    created = filters.DateFromToRangeFilter(widget=RangeWidget(attrs={"type":"date"}))
 
 
     class Meta:
         model = Project
-        fields = ["name", "author", "author_id", "tags"]
-
-        
+        fields = ["name", "author", "author_id", "tags"]        
         
 
 class CommentFilter(filters.FilterSet):
@@ -30,10 +28,3 @@ class CommentFilter(filters.FilterSet):
     class Meta:
         model = Comment
         fields = ["project","author","created"]
-        
-        
-        # {"project": ["icontains", "iexact"],
-        #         "author": ["icontains", "iexact"],
-        #         "created": ["lte", "gte"]
-
-        #         } 
