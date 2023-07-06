@@ -232,10 +232,10 @@ class ImageUploadTests(TestCase):
                 self.PROJECT_URL, payload, format="multipart"
             )
 
-        self.user.refresh_from_db()
+        self.project.refresh_from_db()
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertIn("project_image", res.data)
-        # self.assertTrue(os.path.exists(self.project.project_image.path))
+        self.assertTrue(os.path.exists(self.project.project_image.path))
 
     def test_upload_image_bad_request(self):
         """Test uploading invalid image"""
