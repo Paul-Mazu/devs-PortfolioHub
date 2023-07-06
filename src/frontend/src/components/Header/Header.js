@@ -27,6 +27,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 
 const pages = ["Developers", "Projects"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const registration = ["Sign in", "Create profile"];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -145,7 +146,9 @@ function ResponsiveAppBar() {
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
-            
+            {/* if ( authenticated = true) {
+                display 
+            } */}
             <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
@@ -168,6 +171,13 @@ function ResponsiveAppBar() {
                 </MenuItem>
               ))}
             </Menu>
+            {/* else:
+            display sign in, create profile */}
+            {registration.map((page) => (
+              <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">{page}</Typography>
+              </MenuItem>
+            ))}
           </Box>
         </Toolbar>
       </Container>
