@@ -1,8 +1,10 @@
 """Tests for models.py"""
-from os import name
+from unittest.mock import patch
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 from user.models import Tag
+from user import models
+import os
 
 
 def create_user(email="user@example.com", password="TestPass123"):
@@ -49,6 +51,17 @@ class UserModelTests(TestCase):
         )
         self.assertTrue(user.is_superuser)
         self.assertTrue(user.is_staff)
+
+    @patch("user.models.uuid.uuid4")
+    def test_user_file_name(self, mock_uuid):
+        """Test generating image path"""
+        uuid = "test-uuid"
+        mock_uuid.return_value = uuid
+        file_mock_path = os.path.join("uploads", "user", uuid)
+
+        file_path = models.user_image_file_path(None, "example.jpg")
+
+        self.assertEqual(file_path, f"{file_mock_path}.jpg")
 
 
 class TagModelTest(TestCase):

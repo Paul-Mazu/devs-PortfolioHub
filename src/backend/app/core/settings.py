@@ -124,10 +124,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = "/static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
-MEDIA_ROOT = BASE_DIR / "uploads"
-MEDIA_URL = "/files/"
+STATIC_URL = "/static/static/"
+MEDIA_URL = "/static/media/"
+MEDIA_ROOT = "vol/web/media"
+STATIC_ROOT = "vol/web/static"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -143,4 +144,7 @@ REST_FRAMEWORK = {
         'django_filters.rest_framework.DjangoFilterBackend',),
 }
 
-SPECTACULAR_SETTINGS = {"TITLE": "devs-PortfolioHub"}
+SPECTACULAR_SETTINGS = {
+    "TITLE": "devs-PortfolioHub",
+    "COMPONENT_SPLIT_REQUEST": True,
+}
