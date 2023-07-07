@@ -7,7 +7,7 @@ import ImgMediaCard from "../Card/Card";
 
 export default function ProjectList() {
    return (
-     <div className="herobg">
+     <div className="main">
        <p className="description">Discover the best projects</p>
        <ImgMediaCard />
      </div>

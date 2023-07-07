@@ -20,3 +20,10 @@ code {
   font-size: 150px;
   color: greenyellow;
 }
+
+.main {
+  position: absolute;
+  top: 150px;
+  text-align: center;
+  width: 100vw;
+}

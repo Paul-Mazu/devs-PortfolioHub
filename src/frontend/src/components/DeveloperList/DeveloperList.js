@@ -19,10 +19,10 @@ export default function DeveloperList() {
     }
   };
 
-  return(
-         <div className="herobg">
-       <p className="description">Discover the best developers</p>
-       <ImgMediaCard />
-     </div>
+  return (
+    <div className="main">
+      <p className="description">Discover the best developers</p>
+      <ImgMediaCard />
+    </div>
   );
 }

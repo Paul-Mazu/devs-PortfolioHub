@@ -29,7 +29,7 @@ const dummyDeveloper = {
 
 export default function MyProfile() {
    return (
-        <div className="herobg">
+        <div className="main">
             <h2>Example for isUser=false (i.e. the profile of somebody else, but not the current user). Obviously, the route should be different:</h2>
             <DeveloperDetail 
                 isUser={false}

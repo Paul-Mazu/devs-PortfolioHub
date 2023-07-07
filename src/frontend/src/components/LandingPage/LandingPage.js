@@ -5,7 +5,7 @@ import "./LandingPage.css";
 
 export default function LandingPage() {
    return (
-     <div className="herobg">
+     <div className="main">
        <p className="description">Discover the best talents</p>
      </div>
   );
