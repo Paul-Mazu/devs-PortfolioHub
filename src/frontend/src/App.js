@@ -1,4 +1,5 @@
 import './App.css';
+import HeroImage from "./components/HeroImage/HeroImage";
 import Header from "./components/Header/Header";
 import LandingPage from "./components/LandingPage/LandingPage";
 import ProjectList from "./components/ProjectList/ProjectList";
@@ -11,6 +12,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <HeroImage />
         <Header />
         <Routes>
           <Route path="/" element={<LandingPage />} />
