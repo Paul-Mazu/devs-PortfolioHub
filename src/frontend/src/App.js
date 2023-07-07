@@ -2,7 +2,7 @@
 import './App.css';
 import Header from "./components/Header/Header";
 import LandingPage from "./components/LandingPage/LandingPage";
-import ImgMediaCard from "./components/Card/Card";
+import ProjectList from "./components/ProjectList/ProjectList";
 import Footer from "./components/Footer/Footer";
 import DeveloperList from './components/DeveloperList/DeveloperList';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -15,7 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="developers" element={<DeveloperList />} />
-          <Route path="projects" element={<ImgMediaCard />} />
+          <Route path="projects" element={<ProjectList />} />
         </Routes>
       </BrowserRouter>
       <Footer />
