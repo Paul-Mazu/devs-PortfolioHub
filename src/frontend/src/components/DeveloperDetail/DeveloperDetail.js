@@ -13,7 +13,7 @@ export default function DeveloperDetail({developer, isUser}) {
     else {
         return (
             <div>
-                <p className="description">Welcome to {developer} profile</p>
+                <p className="description">Welcome to {developer.name}'s profile</p>
             </div>
         );
     }
