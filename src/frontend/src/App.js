@@ -1,6 +1,6 @@
 
 import './App.css';
-import ResponsiveAppBar from "./components/Header/Header";
+import Header from "./components/Header/Header";
 import ImgMediaCard from "./components/Card/Card";
 import Footer from "./components/Footer/Footer";
 import DeveloperList from './components/DeveloperList/DeveloperList';
@@ -10,12 +10,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <header className="App-header">
-          <ResponsiveAppBar />
-          <br />
-          <br />
-          <br />
-        </header>
+        <Header />
         <Routes>
           <Route
             path="/"
