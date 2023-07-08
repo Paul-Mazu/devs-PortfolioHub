@@ -1,5 +1,6 @@
 import "./DeveloperList.css";
 import axios from "axios";
+import { getAllDevelopers } from "../../api/developers.api";
 import ImgMediaCard from "../Card/Card";
 
 
@@ -8,20 +9,22 @@ import ImgMediaCard from "../Card/Card";
 // API calls go to /api/user/users/ 
 
 export default function DeveloperList() {
-  const getDevs = async () => {
-    try {
-      const foundDevs = await axios.get(
-        "http://localhost:8000/api/user/users/"
-      );
-      return foundDevs;
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const getDevs = async () => {
+  //   try {
+  //     const foundDevs = await axios.get(
+  //       "http://localhost:8000/api/user/users/"
+  //     );
+  //     return foundDevs;
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
+  getAllDevelopers()
   return (
     <div className="main">
       <p className="description">Discover the best developers</p>
+      
       <ImgMediaCard />
     </div>
   );
