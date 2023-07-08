@@ -2,11 +2,12 @@ import axios from "axios";
 
 // a file to bundle and export the various developer APIs (find all, filter, find one by ID, find active user)
 
-const BASE_URL = "http://localhost:8000"
+const BASE_URL = "http://localhost:8000/"
 
 export async function getAllDevelopers () {
     try {        
         let foundDevelopers = await axios.get(BASE_URL + "api/user/users/", { withCredentials: true });
+        console.log(foundDevelopers)
         return foundDevelopers;
     } catch (error) {
         console.log(error);
