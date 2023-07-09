@@ -2,6 +2,7 @@ asgiref==3.7.2
 attrs==23.1.0
 backports.zoneinfo==0.2.1
 Django==4.2.3
+django-cors-headers==4.1.0
 django-filter==23.2
 djangorestframework==3.14.0
 drf-spectacular==0.26.3
