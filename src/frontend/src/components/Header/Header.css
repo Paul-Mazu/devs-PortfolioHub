@@ -1,4 +1,10 @@
-.Header img {
+header {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+}
+
+.header img {
     width: 150px;
     
     box-shadow: 0 3px 3px 0;
