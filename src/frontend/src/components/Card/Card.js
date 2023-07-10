@@ -34,21 +34,30 @@ import reptile from "../../images/contemplative-reptile.jpg";
 // }
 
 export default function DeveloperCard({developer}) {
+
+  const checkImageUrl = (image) => {
+    if (image === null) {
+      return reptile
+    } else {
+      return image
+    }
+  };
+
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
         alt="developer profile image"
         height="140"
-        image={developer.profile_image}
+        image={checkImageUrl(developer.profile_image)}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Lizard
+        {developer.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+        {developer.bio}
+
         </Typography>
       </CardContent>
       <CardActions>
