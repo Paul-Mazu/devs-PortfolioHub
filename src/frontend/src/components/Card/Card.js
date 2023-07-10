@@ -7,14 +7,40 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import reptile from "../../images/contemplative-reptile.jpg";
 
-export default function ImgMediaCard() {
+// for reference: format of developer profile
+
+// {
+//   "id": 0,
+//   "email": "user@example.com",
+//   "profile_image": "string",
+//   "name": "string",
+//   "short_desc": "string",
+//   "tags": [
+//     {
+//       "name": "string"
+//     }
+//   ],
+//   "bio": "string",
+//   "title": "string",
+//   "address": "string",
+//   "working_at": "string",
+//   "status_open_to_work": true,
+//   "github_link": "string",
+//   "linkedin_link": "string",
+//   "website_link": "string",
+//   "xing_link": "string",
+//   "whatsapp": "string",
+//   "messenger": "string"
+// }
+
+export default function DeveloperCard({developer}) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
-        alt="green iguana"
+        alt="developer profile image"
         height="140"
-        image={reptile}
+        image={developer.profile_image}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
