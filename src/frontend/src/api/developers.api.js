@@ -7,7 +7,7 @@ const BASE_URL = "http://localhost:8000/"
 export async function getAllDevelopers () {
     try {        
         let foundDevelopers = await axios.get(BASE_URL + "api/user/users/", { withCredentials: true });
-        console.log(foundDevelopers)
+        // console.log(foundDevelopers)
         return foundDevelopers;
     } catch (error) {
         console.log(error);

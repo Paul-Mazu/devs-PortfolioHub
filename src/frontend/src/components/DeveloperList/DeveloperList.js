@@ -10,16 +10,6 @@ import DeveloperCard from "../Card/Card";
 // API calls go to /api/user/users/ 
 
 export default function DeveloperList() {
-  // const getDevs = async () => {
-  //   try {
-  //     const foundDevs = await axios.get(
-  //       "http://localhost:8000/api/user/users/"
-  //     );
-  //     return foundDevs;
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   const [developers, setDevelopers] = useState([]);
 
@@ -38,33 +28,11 @@ export default function DeveloperList() {
   //   console.log("Matching recommendations:", remediesToShow);
   // };
 
-  // const handleChange = async () => {
-  //   const result = await getAllDevelopers();
-  //   setDevelopers(result);
-  // };
-
-  // useEffect(() => {
-  //   const result = getAllDevelopers();
-  //   console.log(result);
-  //   console.log(result.state);
-  //   setDevelopers(result.data);
-  // }, [])
-  
-  // useEffect(() => {
-  //   getAllDevelopers().then((value) => {
-  //     setDevelopers(value.data);
-  //   })
-  // }, [])
-
-  // this sends a million requests per second
-  
-  const result = getAllDevelopers()
-  result.then((value) => {
-    setDevelopers(value.data);
-    console.log(value);
-  }).catch(err => {
-    console.log(err);
-  });
+  useEffect(() => {
+    getAllDevelopers()
+     .then((response) => setDevelopers(response.data))
+     .catch(e => setDevelopers([]));
+  }, []);
 
   return (
     <div className="main">
