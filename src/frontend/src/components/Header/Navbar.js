@@ -10,7 +10,7 @@ import {
   Logo,
   OpenLinksButton,
   NavbarLinkExtended,
-  Logo1
+  RightOptions
 } from "./styles/Navbar.style";
 import LogoImg from "./devhub-logo.png";
 
@@ -22,13 +22,13 @@ function Navbar() {
       <NavbarInnerContainer>
         <LeftContainer>
           <NavbarLinkContainer>
-            <Logo1>
-              <NavbarLink to="/">
-                <Logo src={LogoImg}></Logo>
-              </NavbarLink>
-            </Logo1>
-            <NavbarLink to="/developers"> Developers</NavbarLink>
-            <NavbarLink to="/projects"> Projects</NavbarLink>
+            <NavbarLink to="/">
+              <Logo src={LogoImg}></Logo>
+            </NavbarLink>
+            <RightOptions>
+              <NavbarLink to="/developers"> Developers</NavbarLink>
+              <NavbarLink to="/projects"> Projects</NavbarLink>
+            </RightOptions>
             <OpenLinksButton
               onClick={() => {
                 setExtendNavbar((curr) => !curr);
@@ -47,7 +47,10 @@ function Navbar() {
         <NavbarExtendedContainer>
           <NavbarLinkExtended to="/developers"> Developers</NavbarLinkExtended>
           <NavbarLinkExtended to="/projects"> Projects</NavbarLinkExtended>
-          <NavbarLinkExtended to="/my-profile"> Create profile</NavbarLinkExtended>
+          <NavbarLinkExtended to="/my-profile">
+            {" "}
+            Create profile
+          </NavbarLinkExtended>
           <NavbarLinkExtended to="/sign-in"> Sign in</NavbarLinkExtended>
         </NavbarExtendedContainer>
       )}
