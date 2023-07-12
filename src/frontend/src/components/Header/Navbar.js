@@ -10,6 +10,7 @@ import {
   Logo,
   OpenLinksButton,
   NavbarLinkExtended,
+  Logo1
 } from "./styles/Navbar.style";
 import LogoImg from "./devhub-logo.png";
 
@@ -21,10 +22,13 @@ function Navbar() {
       <NavbarInnerContainer>
         <LeftContainer>
           <NavbarLinkContainer>
-            <NavbarLink to="/"> Home</NavbarLink>
-            <NavbarLink to="/products"> Products</NavbarLink>
-            <NavbarLink to="/contact"> Contact Us</NavbarLink>
-            <NavbarLink to="/about"> About Us</NavbarLink>
+            <Logo1>
+              <NavbarLink to="/">
+                <Logo src={LogoImg}></Logo>
+              </NavbarLink>
+            </Logo1>
+            <NavbarLink to="/developers"> Developers</NavbarLink>
+            <NavbarLink to="/projects"> Projects</NavbarLink>
             <OpenLinksButton
               onClick={() => {
                 setExtendNavbar((curr) => !curr);
@@ -35,15 +39,16 @@ function Navbar() {
           </NavbarLinkContainer>
         </LeftContainer>
         <RightContainer>
-          <Logo src={LogoImg}></Logo>
+          <NavbarLink to="/"> Create profile</NavbarLink>
+          <NavbarLink to="/products"> Sign in</NavbarLink>
         </RightContainer>
       </NavbarInnerContainer>
       {extendNavbar && (
         <NavbarExtendedContainer>
-          <NavbarLinkExtended to="/"> Home</NavbarLinkExtended>
-          <NavbarLinkExtended to="/products"> Products</NavbarLinkExtended>
-          <NavbarLinkExtended to="/contact"> Contact Us</NavbarLinkExtended>
-          <NavbarLinkExtended to="/about"> About Us</NavbarLinkExtended>
+          <NavbarLinkExtended to="/developers"> Developers</NavbarLinkExtended>
+          <NavbarLinkExtended to="/projects"> Projects</NavbarLinkExtended>
+          <NavbarLinkExtended to="/my-profile"> Create profile</NavbarLinkExtended>
+          <NavbarLinkExtended to="/sign-in"> Sign in</NavbarLinkExtended>
         </NavbarExtendedContainer>
       )}
     </NavbarContainer>
