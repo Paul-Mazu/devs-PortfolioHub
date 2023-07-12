@@ -1,9 +1,9 @@
-import './App.css';
+import "./App.css";
 import HeroImage from "./components/HeroImage/HeroImage";
-import Header from "./components/Header/Header";
+import Navbar from "./components/Header/Navbar";
 import LandingPage from "./components/LandingPage/LandingPage";
 import ProjectList from "./components/ProjectList/ProjectList";
-import DeveloperList from './components/DeveloperList/DeveloperList';
+import DeveloperList from "./components/DeveloperList/DeveloperList";
 import MyProfile from "./components/MyProfile/MyProfile";
 import Footer from "./components/Footer/Footer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -13,7 +13,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <HeroImage />
-        <Header />
+        <Navbar />
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="developers" element={<DeveloperList />} />
@@ -25,7 +25,5 @@ function App() {
     </div>
   );
 }
-
-
 
 export default App;
