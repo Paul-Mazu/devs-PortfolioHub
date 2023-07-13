@@ -1,10 +1,5 @@
 import * as React from "react";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+import "./Card.css"
 import placeholderImage from "../../images/contemplative-reptile.jpg";
 
 // for reference: format of developer profile
@@ -33,7 +28,7 @@ import placeholderImage from "../../images/contemplative-reptile.jpg";
 //   "messenger": "string"
 // }
 
-export function DeveloperCard({developer}) {
+export function DeveloperCard({ developer }) {
 
   const checkImageUrl = (image) => {
     if (image === null) {
@@ -43,27 +38,34 @@ export function DeveloperCard({developer}) {
     }
   };
 
-  return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardMedia
-        component="img"
-        alt="developer profile image"
-        height="140"
-        image={checkImageUrl(developer.profile_image)}
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-        {developer.name}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-        {developer.bio}
+  const checkPosition = (developer) => {
+    if (developer.working_at != null) {
+      return `${developer.title} at ${developer.working_at}`;
+    } else {
+      return developer.title;
+    }
+  }
 
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </Card>
+  const tags = developer.tags;
+  const listTags = tags.map((d, idx) => <h3 className="tag" key={idx}>{d.name}</h3>);
+
+  return (
+    <a href="/profile">
+      <div className="card-main">
+        <div className="card-header">
+          <img className={"card-dev-pic " + developer.status_open_to_work} src={checkImageUrl(developer.profile_image)} alt="Developer profile"></img>
+          <div className="card-header-titles">
+            <h2 className="card-title">{developer.name}</h2>
+            <h3 className="card-title">{checkPosition(developer)}</h3>
+            <div className="tag-list">
+              {listTags}
+            </div>
+          </div>
+        </div>
+        <div className="card-body">
+          <p className="card-text">{developer.short_desc}</p>
+        </div>
+      </div>
+    </a>
   );
 }
