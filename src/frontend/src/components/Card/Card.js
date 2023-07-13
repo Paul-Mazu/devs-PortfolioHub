@@ -5,7 +5,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import reptile from "../../images/contemplative-reptile.jpg";
+import placeholderImage from "../../images/contemplative-reptile.jpg";
 
 // for reference: format of developer profile
 
@@ -33,11 +33,11 @@ import reptile from "../../images/contemplative-reptile.jpg";
 //   "messenger": "string"
 // }
 
-export default function DeveloperCard({developer}) {
+export function DeveloperCard({developer}) {
 
   const checkImageUrl = (image) => {
     if (image === null) {
-      return reptile
+      return placeholderImage
     } else {
       return image
     }
