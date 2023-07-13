@@ -15,6 +15,7 @@ class ProjectSerializer(serializers.ModelSerializer):
         fields = [
             "id",
             "name",
+            "project_image",
             "short_desc",
             "author",
             "tags",
@@ -48,6 +49,7 @@ class ProjectSerializer(serializers.ModelSerializer):
             self._get_or_create_tags(tags, instance)
         return project
 
+
 """
 Please test if:
 - Test if create new project with tags successful. example: user\tests\test_user_api.py line 156
@@ -56,10 +58,13 @@ Please test if:
 - Test if reassigning existing tags while update successful. example: user\tests\test_user_api.py line 268
 """
 
+
 class CommentSerializer(serializers.ModelSerializer):
     """Serializer for the Comment model"""
 
-    author = UserSerializer(many=False, required=False, read_only=True) # confused here, required=True/False
+    author = UserSerializer(
+        many=False, required=False, read_only=True
+    )  # confused here, required=True/False
 
     class Meta:
         model = Comment
@@ -70,7 +75,7 @@ class CommentSerializer(serializers.ModelSerializer):
             "body",
             "created",
             "updated",
-            "active",            
+            "active",
         ]
         read_only_fields = ["id", "author"]
 
@@ -80,15 +85,10 @@ class CommentSerializer(serializers.ModelSerializer):
         if author.is_authenticated:
             validated_data["author"] = author
 
-        
         return Comment.objects.create(**validated_data)
-        
 
     def update(self, instance, validated_data):
         """Update and return a comment"""
         validated_data.pop("author", None)
         comment = super().update(instance, validated_data)
         return comment
-
-        
-

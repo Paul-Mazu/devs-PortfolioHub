@@ -11,6 +11,7 @@ from rest_framework.settings import api_settings
 from user.serializers import UserSerializer, AuthTokenSerializer, TagSerializer
 from django.contrib.auth import get_user_model
 from .models import Tag
+from .filters import UserFilter
 
 
 class CreateUserView(generics.CreateAPIView):
@@ -43,6 +44,7 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
 
     serializer_class = UserSerializer
     queryset = get_user_model().objects.all()
+    filterset_class = UserFilter
 
 
 class TagViewSet(
