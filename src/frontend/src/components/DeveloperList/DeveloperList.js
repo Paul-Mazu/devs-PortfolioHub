@@ -2,7 +2,7 @@ import "./DeveloperList.css";
 import axios from "axios";
 import React, { useEffect, useState } from 'react';
 import { getAllDevelopers } from "../../api/developers.api";
-import DeveloperCard from "../Card/Card";
+import { DeveloperCard } from "../Card/Card";
 
 
 // The developer list page should contain a gallery of card components that each show and link to a developer.
@@ -30,18 +30,20 @@ export default function DeveloperList() {
 
   useEffect(() => {
     getAllDevelopers()
-     .then((response) => setDevelopers(response.data))
-     .catch(e => setDevelopers([]));
+      .then((response) => setDevelopers(response.data))
+      .catch(e => setDevelopers([]));
   }, []);
 
   return (
     <div className="main">
       <p className="description">Discover the best developers</p>
-      {developers.map((developer) =>
-        <DeveloperCard
+      <div className="card-gallery debug">
+        {developers.map((developer) =>
+          <DeveloperCard
             developer={developer}
-        />)
-      }
+          />)
+        }
+      </div>
     </div>
   );
 }
