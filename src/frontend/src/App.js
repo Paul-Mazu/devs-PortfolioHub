@@ -1,5 +1,6 @@
 import "./App.css";
 import HeroImage from "./components/HeroImage/HeroImage";
+
 import Navbar from "./components/Header/Navbar";
 import LandingPage from "./components/LandingPage/LandingPage";
 import ProjectList from "./components/ProjectList/ProjectList";
@@ -12,7 +13,8 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <HeroImage />
+    <HeroImage/>
+        
         <Navbar />
         <Routes>
           <Route path="/" element={<LandingPage />} />

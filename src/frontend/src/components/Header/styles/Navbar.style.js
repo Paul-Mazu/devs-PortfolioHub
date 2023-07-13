@@ -10,8 +10,11 @@ export const NavbarContainer = styled.nav`
   display: flex;
   flex-direction: column;
 
+  
+
   @media (min-width: 700px) {
     height: 80px;
+    
   }
 `;
 export const LeftContainer = styled.div`
@@ -64,6 +67,7 @@ export const NavbarLinkExtended = styled(Link)`
   font-family: Arial, Helvetica, sans-serif;
   text-decoration: none;
   margin: 10px;
+
 `;
 
 export const Logo = styled.img`
@@ -84,6 +88,7 @@ export const OpenLinksButton = styled.button`
 
   @media (min-width: 700px) {
     display: none;
+    
   }
 `;
 
@@ -91,6 +96,7 @@ export const NavbarExtendedContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+ 
 
   @media (min-width: 700px) {
     display: none;
