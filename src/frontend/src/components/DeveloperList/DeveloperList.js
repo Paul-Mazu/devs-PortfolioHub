@@ -1,5 +1,4 @@
 import "./DeveloperList.css";
-import axios from "axios";
 import React, { useEffect, useState } from 'react';
 import { getAllDevelopers } from "../../api/developers.api";
 import { DeveloperCard } from "../Card/Card";
@@ -37,7 +36,7 @@ export default function DeveloperList() {
   return (
     <div className="main">
       <p className="description">Discover the best developers</p>
-      <div className="card-gallery debug">
+      <div className="card-gallery">
         {developers.map((developer) =>
           <DeveloperCard
             developer={developer}
