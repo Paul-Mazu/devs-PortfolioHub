@@ -22,7 +22,7 @@ function App() {
           <Route path="projects" element={<ProjectList />} />
           <Route path="register" element={<RegistrationForm />} />
           <Route path="login" element={<LogInForm />} />
-          <Route path="my-profile" element={<MyProfile />} />
+          <Route path="profile" element={<MyProfile />} />
         </Routes>
       </BrowserRouter>
       <Footer />
