@@ -4,6 +4,7 @@ import Navbar from "./components/Header/Navbar";
 import LandingPage from "./components/LandingPage/LandingPage";
 import ProjectList from "./components/ProjectList/ProjectList";
 import DeveloperList from "./components/DeveloperList/DeveloperList";
+import RegistrationForm from "./components/RegistrationForm/RegistrationForm";
 import MyProfile from "./components/MyProfile/MyProfile";
 import Footer from "./components/Footer/Footer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="developers" element={<DeveloperList />} />
           <Route path="projects" element={<ProjectList />} />
+          <Route path="register" element={<RegistrationForm />} />
           <Route path="my-profile" element={<MyProfile />} />
         </Routes>
       </BrowserRouter>
