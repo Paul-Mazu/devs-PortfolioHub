@@ -6,7 +6,10 @@ export default function DeveloperDetail({developer, isUser}) {
     if (isUser) {
         return (
             <div>
-                <p className="description">Welcome to your profile</p>
+                <p className="description">Welcome to your profile, {developer.name}</p>
+                <h2>{developer.name}</h2>
+                <h2>{developer.email}</h2>
+                <h2>{developer.bio}</h2>
             </div>
         );
     }
