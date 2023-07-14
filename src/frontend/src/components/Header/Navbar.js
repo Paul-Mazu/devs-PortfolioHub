@@ -39,8 +39,8 @@ function Navbar() {
           </NavbarLinkContainer>
         </LeftContainer>
         <RightContainer>
-          <NavbarLink to="/"> Create profile</NavbarLink>
-          <NavbarLink to="/products"> Sign in</NavbarLink>
+          <NavbarLink to="/register"> Create profile</NavbarLink>
+          <NavbarLink to="/login"> Sign in</NavbarLink>
         </RightContainer>
       </NavbarInnerContainer>
       {extendNavbar && (
