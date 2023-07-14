@@ -1,5 +1,5 @@
 import "./RegistrationForm.css";
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { userRegistration } from "../../api/users.api";
 
 export default function RegistrationForm() {
