@@ -25,6 +25,7 @@ export async function userRegistration (name, email, password) {
             }
         });
         console.log(`User ${name} registered successfully`);
+        window.location = "/profile";
     }
     catch (err) {
         console.log(err.message);
