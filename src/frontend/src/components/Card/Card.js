@@ -1,34 +1,71 @@
 import * as React from "react";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import reptile from "../../images/contemplative-reptile.jpg";
+import "./Card.css"
+import placeholderImage from "../../images/contemplative-reptile.jpg";
 
-export default function ImgMediaCard() {
+// for reference: format of developer profile
+
+// {
+//   "id": 0,
+//   "email": "user@example.com",
+//   "profile_image": "string",
+//   "name": "string",
+//   "short_desc": "string",
+//   "tags": [
+//     {
+//       "name": "string"
+//     }
+//   ],
+//   "bio": "string",
+//   "title": "string",
+//   "address": "string",
+//   "working_at": "string",
+//   "status_open_to_work": true,
+//   "github_link": "string",
+//   "linkedin_link": "string",
+//   "website_link": "string",
+//   "xing_link": "string",
+//   "whatsapp": "string",
+//   "messenger": "string"
+// }
+
+export function DeveloperCard({ developer }) {
+
+  const checkImageUrl = (image) => {
+    if (image === null) {
+      return placeholderImage
+    } else {
+      return image
+    }
+  };
+
+  const checkPosition = (developer) => {
+    if (developer.working_at != null) {
+      return `${developer.title} at ${developer.working_at}`;
+    } else {
+      return developer.title;
+    }
+  }
+
+  const tags = developer.tags;
+  const listTags = tags.map((d, idx) => <h3 className="tag" key={idx}>{d.name}</h3>);
+
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardMedia
-        component="img"
-        alt="green iguana"
-        height="140"
-        image={reptile}
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          Lizard
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </Card>
+    <a href="/profile">
+      <div className="card-main">
+        <div className="card-header">
+          <img className={"card-dev-pic " + developer.status_open_to_work} src={checkImageUrl(developer.profile_image)} alt="Developer profile"></img>
+          <div className="card-header-titles">
+            <h2 className="card-title">{developer.name}</h2>
+            <h3 className="card-title">{checkPosition(developer)}</h3>
+            <div className="tag-list">
+              {listTags}
+            </div>
+          </div>
+        </div>
+        <div className="card-body">
+          <p className="card-text">{developer.short_desc}</p>
+        </div>
+      </div>
+    </a>
   );
 }
