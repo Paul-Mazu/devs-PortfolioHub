@@ -8,7 +8,7 @@
 }
 
 .form-card {
-    z-index: -1;
+    /* z-index: -1; */
     padding: 20px;
     background: rgba(214, 214, 214, 0.413);
 }

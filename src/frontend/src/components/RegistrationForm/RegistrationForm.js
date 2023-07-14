@@ -50,6 +50,10 @@ export default function DeveloperList() {
                         <input className="input" type="password" id="confirmPassword" value={confirmPassword} onChange={(e) => handleInputChange(e)} placeholder="" required/>
                     </div>
                 </div>
+
+                {/* <Link to="/profile"> */}
+                <button onClick={() => userRegistration(name, email, password)} type="submit" className='form-button'>Register</button>
+                {/* </Link> */}
             </div>
         </div>
     )
