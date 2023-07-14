@@ -1,4 +1,5 @@
 import axios from "axios";
+import { setToken } from "../helpers/helpers.js";
 
 // a file to bundle and export the various user APIs (create, login (token), logout, delete)
 
@@ -49,9 +50,10 @@ export async function userLogIn (email, password) {
                 email: email,
                 password: password
             }
-        }).then(data => data.json());
+        }).then(response => response.data.token);
         console.log(`User signed in successfully`);
-        return token
+        setToken(token);
+        window.location = "/profile";
     }
     catch (err) {
         console.log(err.message);
