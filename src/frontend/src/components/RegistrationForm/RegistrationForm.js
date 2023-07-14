@@ -2,7 +2,7 @@ import "./RegistrationForm.css";
 import React, { useEffect, useState } from 'react';
 import { userRegistration } from "../../api/users.api";
 
-export default function DeveloperList() {
+export default function RegistrationForm() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
