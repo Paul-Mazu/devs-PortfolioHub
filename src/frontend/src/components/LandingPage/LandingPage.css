@@ -1,0 +1,15 @@
+.description {
+    color:rgb(161, 123, 199);
+    box-shadow: 0 5px 5px 0;
+    
+    font-size: 70px;
+    margin-top: 150px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    transition: ease-in-out 200ms;
+}
+
+.description:hover {
+   
+color: rgb(71, 186, 215);
+cursor:pointer;
+}

@@ -36,6 +36,8 @@ export async function getDeveloperById (id) {
     }
 };
 
+// might move this into user apis? 
+
 export async function getCurrentDeveloper () {
     try {        
         let foundDeveloper = await axios.get(BASE_URL + "/api/user/me/", { withCredentials: true });

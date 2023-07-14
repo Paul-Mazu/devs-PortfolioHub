@@ -1,3 +1,5 @@
+/* This Stylesheet houses styles that are reused across all components */
+
 body {
   margin: 0;
   min-height: 100%;
@@ -26,4 +28,10 @@ code {
   top: 150px;
   text-align: center;
   width: 100vw;
+}
+
+/* Debugging class can be assigned during development to help visualising elements that are being worked on */
+
+.debug {
+  background: blue;
 }

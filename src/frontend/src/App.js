@@ -1,3 +1,10 @@
+import "./App.css";
+import HeroImage from "./components/HeroImage/HeroImage";
+
+import Navbar from "./components/Header/Navbar";
+import LandingPage from "./components/LandingPage/LandingPage";
+import ProjectList from "./components/ProjectList/ProjectList";
+import DeveloperList from "./components/DeveloperList/DeveloperList";
 import './App.css';
 import HeroImage from "./components/HeroImage/HeroImage";
 import Header from "./components/Header/Header";
@@ -12,6 +19,9 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+    <HeroImage/>
+        
+        <Navbar />
         <HeroImage />
         <Header />
         <Routes>
@@ -25,7 +35,5 @@ function App() {
     </div>
   );
 }
-
-
 
 export default App;
