@@ -36,3 +36,24 @@ export async function userRegistration (name, email, password) {
         // return registerData.json();
     }
 }
+
+export async function userLogIn (email, password) {
+    console.log(email);
+
+    try {
+        let token = await axios({
+            method: 'post',
+            withCredentials: true,
+            url: BASE_URL + "api/user/token/",
+            data: {
+                email: email,
+                password: password
+            }
+        }).then(data => data.json());
+        console.log(`User signed in successfully`);
+        return token
+    }
+    catch (err) {
+        console.log(err.message);
+    }
+}
