@@ -6,7 +6,7 @@ from django.test import TestCase
 from rest_framework import status
 from rest_framework.test import APIClient
 from user.models import Tag
-from user.serializers import TagSerializer, UserSerializer
+from user.serializers import TagSerializer
 
 
 TAGS_URL = reverse("user:tag-list")
@@ -51,7 +51,7 @@ class PublicTagsAPITests(TestCase):
         user = create_user()
         user.tags.set([tag, tag1])
 
-        USER_URL = reverse("user:user-detail", kwargs={"pk": 1})
+        USER_URL = reverse("user:user-detail", kwargs={"pk": user.id})
         res = self.client.get(USER_URL)
         tags = Tag.objects.all()
 
@@ -77,7 +77,7 @@ class PrivateTagsAPITests(TestCase):
         """Test if tag deleted successfuly."""
         tag = Tag.objects.create(name="Django")
 
-        url = detail_url(1)
+        url = detail_url(tag.id)
         res = self.client.delete(url)
         tags = Tag.objects.all()
 
