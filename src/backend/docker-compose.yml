@@ -19,7 +19,6 @@ services:
       - DB_NAME=devdb
       - DB_USER=devuser
       - DB_PASS=changeme
-      - SECRET_KEY = 'django-insecure-!6sdkhqt&2ge5s&66aykqwekzn==c^*5fos!10)ak*z_neoiz$'
     depends_on:
       - db
 
