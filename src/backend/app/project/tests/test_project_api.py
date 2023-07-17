@@ -47,7 +47,7 @@ class ProjectViewSetAuthTestCase(TestCase):
             name="Test User",
         )
         self.client = APIClient()
-        self.client.force_authenticate(user=self.user)
+        self.client.force_authenticate(self.user)
 
     # def test_view_all_projects(self):
     #     """Testing viewing of projects"""
@@ -91,7 +91,7 @@ class ProjectViewSetAuthTestCase(TestCase):
             website_link="Test Website Link",
         )
         updated_field = {"bio": "Update Bio"}
-        URL = reverse("project:my-projects-detail", kwargs={"pk": 1})
+        URL = reverse("project:my-projects-detail", kwargs={"pk": project.id})
         response = self.client.patch(URL, updated_field)
         project.refresh_from_db()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -107,7 +107,7 @@ class ProjectViewSetAuthTestCase(TestCase):
             github_link="Test Github Link",
             website_link="Test Website Link",
         )
-        ### renamed updated_field to update_data
+        ## renamed updated_field to update_data
         updated_data = {
             "name": "Test Project 2",
             "author": self.user,
@@ -116,7 +116,7 @@ class ProjectViewSetAuthTestCase(TestCase):
             "github_link": "Test Github Link 2",
             "website_link": "Test Website Link 2",
         }
-        URL = reverse("project:my-projects-detail", kwargs={"pk": 1})
+        URL = reverse("project:my-projects-detail", kwargs={"pk": project.id})
         response = self.client.put(URL, data=updated_data)
         serializer = ProjectSerializer(
             project

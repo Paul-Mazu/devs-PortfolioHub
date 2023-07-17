@@ -60,7 +60,7 @@ class CommentAPITestCase(TestCase):
     def test_retrieve_comment_unauth(self):
         """Test retrieving specific comment unauthenticated"""
         self.client.logout()
-        comment_detail_url = reverse("project:comments-detail", kwargs={"pk": 1})
+        comment_detail_url = reverse("project:comments-detail", kwargs={"pk": self.comment.id})
         response = self.client.get(comment_detail_url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
@@ -116,7 +116,7 @@ class CommentAPITestCase(TestCase):
 
     def test_update_comment_same_user(self):
         """Test updating a comment by the author"""
-        comment_detail_url = reverse("project:my-comments-detail", kwargs={"pk": 1})
+        comment_detail_url = reverse("project:my-comments-detail", kwargs={"pk": self.comment.id})
         data = {
             "body": "Updated comment"
         }
@@ -127,7 +127,7 @@ class CommentAPITestCase(TestCase):
 
     def test_update_comment_different_user(self):
         """Test updating a comment with a different authenticated user"""
-        comment_detail_url = reverse("project:my-comments-detail", kwargs={"pk": 1})
+        comment_detail_url = reverse("project:my-comments-detail", kwargs={"pk": self.comment.id})
         data = {
             "body": "Updated comment"
         }
@@ -136,13 +136,13 @@ class CommentAPITestCase(TestCase):
 
     def test_delete_comment_author(self):
         """Test deleting a comment by the author"""
-        comment_detail_url = reverse("project:my-comments-detail", kwargs={"pk": 1})
+        comment_detail_url = reverse("project:my-comments-detail", kwargs={"pk": self.comment.id})
         response = self.client1.delete(comment_detail_url)
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertFalse(Comment.objects.filter(pk=self.comment.id).exists())
 
     def test_delete_comment_different_user(self):
         """Test deleting a comment with a different authenticated user"""
-        comment_detail_url = reverse("project:my-comments-detail", kwargs={"pk": 1})
+        comment_detail_url = reverse("project:my-comments-detail", kwargs={"pk": self.comment.id})
         response = self.client2.delete(comment_detail_url)
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
