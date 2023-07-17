@@ -9,8 +9,7 @@ export const NavbarContainer = styled.nav`
   background-color: black;
   display: flex;
   flex-direction: column;
-
-  
+  z-index: 1;
 
   @media (min-width: 700px) {
     height: 80px;
