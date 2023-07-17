@@ -1,5 +1,7 @@
-import * as React from "react";
 import "./Card.css"
+import * as React from "react";
+import { Link } from "react-router-dom";
+import slugify from "react-slugify";
 import placeholderImage from "../../images/contemplative-reptile.jpg";
 
 // for reference: format of developer profile
@@ -50,7 +52,8 @@ export function DeveloperCard({ developer }) {
   const listTags = tags.map((d, idx) => <h3 className="tag" key={idx}>{d.name}</h3>);
 
   return (
-    <a href="/profile">
+    // instead of a to /profile, link to component and pass in user ID? or developer data?
+    <Link to={"/developers/" + slugify(developer.name)} state={{userId: developer.id}}>
       <div className="card-main">
         <div className="card-header">
           <img className={"card-dev-pic " + developer.status_open_to_work} src={checkImageUrl(developer.profile_image)} alt="Developer profile"></img>
@@ -66,6 +69,6 @@ export function DeveloperCard({ developer }) {
           <p className="card-text">{developer.short_desc}</p>
         </div>
       </div>
-    </a>
+    </Link>
   );
 }
