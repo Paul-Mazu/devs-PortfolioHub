@@ -15,7 +15,7 @@ class ProjectViewSetAuth(viewsets.ModelViewSet):
     serializer_class = ProjectSerializer
     queryset = Project.objects.all()
     filterset_class = ProjectFilter
-    http_method_names = ["put", "post", "patch", "head"]
+    http_method_names = ["put", "post", "patch", "head", "delete"]
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
 

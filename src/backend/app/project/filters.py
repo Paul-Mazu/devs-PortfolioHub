@@ -20,8 +20,8 @@ class ProjectFilter(filters.FilterSet):
 
 class CommentFilter(filters.FilterSet):
     """Filter Class for Comment model"""
-    project = filters.CharFilter(field_name="project",lookup_expr='icontains') 
-    author = filters.CharFilter(field_name="author", lookup_expr="icontains")
+    project = filters.CharFilter(field_name="project__name",lookup_expr='icontains') 
+    author = filters.CharFilter(field_name="author__name", lookup_expr="icontains")
     created = filters.DateFromToRangeFilter(widget=RangeWidget(attrs={"type":"date"}))
 
 
