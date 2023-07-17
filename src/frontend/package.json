@@ -17,6 +17,7 @@
     "react-icon": "^1.0.0",
     "react-router-dom": "^6.14.1",
     "react-scripts": "5.0.1",
+    "react-slugify": "^3.0.2",
     "styled-components": "^5.3.10",
     "web-vitals": "^2.1.4"
   },
