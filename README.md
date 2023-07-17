@@ -1,7 +1,7 @@
 <div align="center">
 
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/Paul-Mazu/portfolio_page?color=1d7147&style=for-the-badge)
-![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/Paul-Mazu/portfolio_page?color=EAE6B4&style=for-the-badge) ![GitHub milestones](https://img.shields.io/github/milestones/all/Paul-Mazu/portfolio_page?color=F2F2F2&style=for-the-badge) ![GitHub language count](https://img.shields.io/github/languages/count/Paul-Mazu/portfolio_page?color=62B096&style=for-the-badge)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/Paul-Mazu/devs-PortfolioHub?color=1d7147&style=for-the-badge)
+![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/Paul-Mazu/devs-PortfolioHub?color=EAE6B4&style=for-the-badge) ![GitHub milestones](https://img.shields.io/github/milestones/all/Paul-Mazu/devs-PortfolioHub?color=F2F2F2&style=for-the-badge) ![GitHub language count](https://img.shields.io/github/languages/count/Paul-Mazu/devs-PortfolioHub?color=62B096&style=for-the-badge)
 </div>
 
 <div align="center">

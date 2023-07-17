@@ -145,11 +145,12 @@ class PublicUserApiTests(TestCase):
 
     def test_retrieve_user_detaileduser(self):
         """Test for retrieving certain user"""
-        create_user()
-        USER_URL = reverse("user:user-detail", kwargs={"pk": 1})
+        user = create_user()
+
+        USER_URL = reverse("user:user-detail", kwargs={"pk": user.id})
         res = self.client.get(USER_URL)
 
-        user = get_user_model().objects.get(pk=1)
+        user = get_user_model().objects.get(id=user.id)
         serializer = UserSerializer(user)
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)

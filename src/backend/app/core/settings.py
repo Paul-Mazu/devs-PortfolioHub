@@ -27,7 +27,8 @@ SECRET_KEY = os.environ.get("SECRET_KEY", get_random_secret_key)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1"]
+ALLOWED_HOSTS = ["127.0.0.1",
+                 "localhost"]
 
 
 # Application definition
@@ -46,9 +47,13 @@ INSTALLED_APPS = [
     "user.apps.UserConfig",
     "project.apps.ProjectConfig",
     "django_filters",
+    # for frontend API requests in development
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
+    # for frontend API requests in development
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -82,10 +87,19 @@ WSGI_APPLICATION = "core.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.environ.get("DB_NAME", "dev_portfolio"),
+        "HOST": os.environ.get("DB_HOST", "localhost"),
+        "USER": os.environ.get("DB_USER", "paul"),
+        "PASSWORD": os.environ.get("DB_PASS", "1123"),
     }
 }
 
@@ -148,3 +162,20 @@ SPECTACULAR_SETTINGS = {
     "TITLE": "devs-PortfolioHub",
     "COMPONENT_SPLIT_REQUEST": True,
 }
+
+# CORS settings for Development
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOW_CREDENTIALS = True
+
+# What CPRS settings should look like for production
+
+# CORS_ORIGIN_ALLOW_ALL = False
+
+# CORS_ORIGIN_WHITELIST = [
+#     "https://example.com",
+#     "https://sub.example.com",
+#     "http://localhost:8080",
+#     "http://127.0.0.1:9000"
+# ]
