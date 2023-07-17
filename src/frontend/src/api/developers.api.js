@@ -16,9 +16,9 @@ export async function getAllDevelopers () {
 
 // the filters parameter is simply a placeholder for now for the actual filters we want to use depending on the backend API provided
 
-export async function getFilteredDevelopers (filters) {
+export async function getFilteredDevelopers (name, tags) {
     try {        
-        let foundDevelopers = await axios.get(BASE_URL + "api/user/users/", {params: {filters: filters}}, { withCredentials: true });
+        let foundDevelopers = await axios.get(BASE_URL + "api/user/users/", {params: {name: name, tags: tags}}, { withCredentials: true });
         return foundDevelopers;
     } catch (error) {
         console.log(error);
