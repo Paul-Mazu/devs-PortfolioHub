@@ -34,7 +34,6 @@ export default function MyProfile() {
   const [developer, setDeveloper] = useState([]);
 
   const userToken = getToken();
-  console.log(userToken);
 
   useEffect(() => {
     getCurrentDeveloper(userToken)
