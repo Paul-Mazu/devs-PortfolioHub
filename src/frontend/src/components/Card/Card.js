@@ -52,8 +52,9 @@ export function DeveloperCard({ developer }) {
   const listTags = tags.map((d, idx) => <h3 className="tag" key={idx}>{d.name}</h3>);
 
   return (
-    // instead of a to /profile, link to component and pass in user ID? or developer data?
-    <Link to={"/developers/" + slugify(developer.name)} state={{userId: developer.id}}>
+    // for now: developers/:id to make profiles accessible through URL and give option to bookmark them
+    // <Link to={"/developers/" + slugify(developer.name)} state={{userId: developer.id}}>
+    <Link to={"/developers/" + developer.id }>
       <div className="card-main">
         <div className="card-header">
           <img className={"card-dev-pic " + developer.status_open_to_work} src={checkImageUrl(developer.profile_image)} alt="Developer profile"></img>
