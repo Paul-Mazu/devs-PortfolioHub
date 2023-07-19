@@ -1,7 +1,7 @@
 import "./ProjectList.css";
 import React, { useEffect, useState } from 'react';
 import { getAllProjects } from "../../api/projects.api";
-import { DeveloperCard } from "../Card/Card";
+import { ProjectCard } from "../Card/Card";
 
 // import { ProjectCard } from "../Card/Card";
 
@@ -26,9 +26,9 @@ export default function ProjectList() {
     <div className="main">
       <p className="description">Discover the best projects</p>
       <div className="card-gallery">
-        {projects.map((developer) =>
-          <DeveloperCard
-            developer={developer}
+        {projects.map((project) =>
+          <ProjectCard
+            project={project}
           />)
         }
       </div>
