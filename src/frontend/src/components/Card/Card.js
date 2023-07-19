@@ -73,3 +73,45 @@ export function DeveloperCard({ developer }) {
     </Link>
   );
 }
+
+
+[
+  {
+    id: 0,
+    name: "string",
+    project_image: "string",
+    short_desc: "string",
+    author: {
+      id: 0,
+      email: "user@example.com",
+      profile_image: "string",
+      name: "string",
+      short_desc: "string",
+      tags: [
+        {
+          name: "string",
+        },
+      ],
+      bio: "string",
+      title: "string",
+      address: "string",
+      working_at: "string",
+      status_open_to_work: true,
+      github_link: "string",
+      linkedin_link: "string",
+      website_link: "string",
+      xing_link: "string",
+      whatsapp: "string",
+      messenger: "string",
+    },
+    tags: [
+      {
+        name: "string",
+      },
+    ],
+    bio: "string",
+    github_link: "string",
+    website_link: "string",
+  },
+];
+
