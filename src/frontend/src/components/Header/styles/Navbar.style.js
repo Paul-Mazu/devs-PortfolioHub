@@ -26,7 +26,7 @@ export const LeftContainer = styled.div`
 `;
 
 export const RightOptions = styled.div`
-  margin-top: 35px;
+  margin-top: 45px;
 `
 
 export const RightContainer = styled.div`
@@ -72,7 +72,9 @@ export const NavbarLinkExtended = styled(Link)`
 export const Logo = styled.img`
   margin: 10px;
   max-width: 80px;
+  
   height: auto;
+ 
   margin-bottom: 64px;
 `;
 
