@@ -12,7 +12,7 @@ import {
   NavbarLinkExtended,
   RightOptions
 } from "./styles/Navbar.style";
-import LogoImg from "./devhub-logo.png";
+import LogoImg from "./logo4.png";
 
 function Navbar() {
   const [extendNavbar, setExtendNavbar] = useState(false);

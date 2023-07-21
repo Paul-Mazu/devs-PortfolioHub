@@ -61,10 +61,12 @@ Please test if:
 
 class CommentSerializer(serializers.ModelSerializer):
     """Serializer for the Comment model"""
-
-    author = UserSerializer(
-        many=False, required=False, read_only=True
-    )  # confused here, required=True/False
+    project = serializers.StringRelatedField()
+    author = serializers.StringRelatedField()
+    # author = UserSerializer(
+    #     many=False, required=False, read_only=True
+    # )  # confused here, required=True/False
+    
 
     class Meta:
         model = Comment
