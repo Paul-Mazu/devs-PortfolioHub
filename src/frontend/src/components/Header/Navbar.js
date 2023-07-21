@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   NavbarContainer,
   LeftContainer,
@@ -13,9 +13,20 @@ import {
   RightOptions
 } from "./styles/Navbar.style";
 import LogoImg from "./logo4.png";
+import { getCurrentUser } from "../../api/users.api";
+import { getToken, destroyToken } from "../../helpers/helpers.js";
 
 function Navbar() {
   const [extendNavbar, setExtendNavbar] = useState(false);
+  const [activeUser, setActiveUser] = useState(false);
+
+  const userToken = getToken();
+
+  useEffect(() => {
+    getCurrentUser(userToken)
+      .then((response) => setActiveUser(response.data))
+      .catch(e => setActiveUser(false));
+  }, []);
 
   return (
     <NavbarContainer extendNavbar={extendNavbar}>
@@ -39,8 +50,21 @@ function Navbar() {
           </NavbarLinkContainer>
         </LeftContainer>
         <RightContainer>
-          <NavbarLink to="/register"> Create profile</NavbarLink>
-          <NavbarLink to="/login"> Sign in</NavbarLink>
+          {!activeUser &&
+            <NavbarLink to="/register"> Create profile</NavbarLink>
+          }
+          {!activeUser &&
+            <NavbarLink to="/login"> Sign in</NavbarLink>
+          }
+          {activeUser &&
+            <NavbarLink to="/profile"> Profile</NavbarLink>
+          }
+          {activeUser &&
+            <NavbarLink onClick={() => {
+              destroyToken();
+              window.location = "/";
+            }}> Sign out</NavbarLink>
+          }
         </RightContainer>
       </NavbarInnerContainer>
       {extendNavbar && (
