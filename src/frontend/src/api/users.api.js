@@ -59,3 +59,12 @@ export async function userLogIn (email, password) {
         console.log(err.message);
     }
 }
+
+export async function getCurrentUser (userToken) {
+    try {        
+        let foundUser = await axios.get(BASE_URL + "api/user/me/", { withCredentials: true, headers: { Authorization: `token ${userToken}`} });
+        return foundUser;
+    } catch (error) {
+        console.log(error.message);
+    }
+};
