@@ -13,16 +13,14 @@ export const NavbarContainer = styled.nav`
 
   @media (min-width: 700px) {
     height: 80px;
-    
   }
 `;
 export const LeftContainer = styled.div`
   flex: 70%;
   display: flex;
+  justify-content: flex-start;
   align-items: center;
   padding-left: 5%;
-  margin-top: 30px;
-
 `;
 
 export const RightOptions = styled.div`
@@ -33,8 +31,8 @@ export const RightContainer = styled.div`
   flex: 30%;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   padding-right: 50px;
-  margin-top: 15px;
 `;
 
 export const NavbarInnerContainer = styled.div`
@@ -69,13 +67,17 @@ export const NavbarLinkExtended = styled(Link)`
 
 `;
 
-export const Logo = styled.img`
-  margin: 10px;
-  max-width: 80px;
-  
-  height: auto;
- 
-  margin-bottom: 64px;
+export const ImgLogo = styled.img`
+  height: 50px;
+  position: relative;
+  bottom: 12.5px;
+`;
+
+export const TextLogo = styled.img`
+  height: 30px;
+  position: relative;
+  bottom: 20px;
+  padding-right: 20px;
 `;
 
 export const OpenLinksButton = styled.button`

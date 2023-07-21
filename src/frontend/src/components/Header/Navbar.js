@@ -7,12 +7,15 @@ import {
   NavbarInnerContainer,
   NavbarLinkContainer,
   NavbarLink,
-  Logo,
+  ImgLogo,
+  TextLogo,
   OpenLinksButton,
   NavbarLinkExtended,
   RightOptions
 } from "./styles/Navbar.style";
-import LogoImg from "./logo4.png";
+// import LogoImg from "./logo4.png";
+import LogoText from "../../images/text-gradient.png";
+import LogoImg from "../../images/logo-gradpurple.png";
 import { getCurrentUser } from "../../api/users.api";
 import { getToken, destroyToken } from "../../helpers/helpers.js";
 
@@ -34,12 +37,13 @@ function Navbar() {
         <LeftContainer>
           <NavbarLinkContainer>
             <NavbarLink to="/">
-              <Logo src={LogoImg}></Logo>
+              <ImgLogo src={LogoImg}></ImgLogo>
+              <TextLogo src={LogoText}></TextLogo>
             </NavbarLink>
-            <RightOptions>
+            {/* <RightOptions> */}
               <NavbarLink to="/developers"> Developers</NavbarLink>
               <NavbarLink to="/projects"> Projects</NavbarLink>
-            </RightOptions>
+            {/* </RightOptions> */}
             <OpenLinksButton
               onClick={() => {
                 setExtendNavbar((curr) => !curr);
