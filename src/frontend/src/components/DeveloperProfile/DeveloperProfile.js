@@ -4,9 +4,10 @@ import { useEffect, useState } from 'react';
 import { useParams, useLocation } from "react-router-dom";
 import { getDeveloperById } from "../../api/developers.api";
 import { getFilteredDevelopers } from "../../api/developers.api";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 export default function DeveloperProfile() {
-  const [developer, setDeveloper] = useState([]);
+  const [developer, setDeveloper] = useState(false);
 
   // this approach requires users to always access the profile from the developer list but never by just typing the slug directly 
   // (as doing so will result in a null state)  
@@ -41,9 +42,16 @@ export default function DeveloperProfile() {
           isUser={false}
           developer={developer}
         />
-      }
-      {developer === false &&
-        <h2>Developer not found</h2>
+      }  
+      {!developer &&
+        <ErrorMessage
+          e={
+            {
+              code: 404,
+              message: "The requested developer was not found."
+            }
+          }
+        />
       }
     </div>
   );
