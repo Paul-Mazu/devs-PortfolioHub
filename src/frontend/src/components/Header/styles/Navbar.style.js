@@ -67,6 +67,24 @@ export const NavbarLinkExtended = styled(Link)`
 
 `;
 
+export const NavbarSearchField = styled.form`
+  position: relative;
+  right: 30px;
+  width: 200px;
+  font-size: x-large;
+  text-decoration: none;
+`;
+
+export const NavbarSearchInput = styled.input`
+width: 100%;
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 5px;
+color: #F0F6F6;
+background-color: #453750;
+border-color: #F0F6F6;
+`
+
 export const ImgLogo = styled.img`
   height: 50px;
   position: relative;
