@@ -1,6 +1,6 @@
 a {
     margin: 10px;
-    color: white;
+    color: #F0F6F6;
 }
 
 footer {
@@ -8,6 +8,6 @@ footer {
     bottom: 0;
     width: 100%;
     text-align: center;
-    color: white;
-    background-color: black;
+    color: #F0F6F6;
+    background-color: #0C0910;
 }

@@ -6,7 +6,7 @@ export const NavbarContainer = styled.nav`
   top: 0;
   width: 100%;
   height: ${(props) => (props.extendNavbar ? "100vh" : "80px")};
-  background-color: black;
+  background-color: #0C0910;
   display: flex;
   flex-direction: column;
   z-index: 1;
@@ -47,7 +47,7 @@ export const NavbarLinkContainer = styled.div`
 `;
 
 export const NavbarLink = styled(Link)`
-  color: white;
+  color: #F0F6F6;
   font-size: x-large;
   font-family: Arial, Helvetica, sans-serif;
   text-decoration: none;
@@ -59,7 +59,7 @@ export const NavbarLink = styled(Link)`
 `;
 
 export const NavbarLinkExtended = styled(Link)`
-  color: white;
+  color: #F0F6F6;
   font-size: x-large;
   font-family: Arial, Helvetica, sans-serif;
   text-decoration: none;
@@ -85,7 +85,7 @@ export const OpenLinksButton = styled.button`
   height: 50px;
   background: none;
   border: none;
-  color: white;
+  color: #F0F6F6;
   font-size: 45px;
   cursor: pointer;
 
