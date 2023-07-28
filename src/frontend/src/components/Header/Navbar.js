@@ -38,8 +38,14 @@ function Navbar() {
       .catch(e => setActiveUser(false));
   }, []);
 
-  const searchDevelopers = (e) => {
+  const searchDatabase = (e) => {
     e.preventDefault();
+
+    if (location !== "projects") {
+      window.location.assign("/developers?q=" + e.target[0].value);
+    } else {
+      window.location.assign("/projects?q=" + e.target[0].value)
+    }
   }
 
   const queryEntered = (e) => {
@@ -70,11 +76,11 @@ function Navbar() {
           </NavbarLinkContainer>
         </LeftContainer>
         <RightContainer>
-          <NavbarSearchField onSubmit={searchDevelopers}>
+          <NavbarSearchField onSubmit={searchDatabase}>
             { location !== "projects" ? (
-              <NavbarSearchInput type="text" placeholder="Search by developer name or skill" value={query} onChange={e => queryEntered(e)}/>
+              <NavbarSearchInput type="text" placeholder="Search developer by name or skill" value={query} onChange={e => queryEntered(e)}/>
               ) : (
-              <NavbarSearchInput type="text" placeholder="Search by project name or author" value={query} onChange={e => queryEntered(e)}/>
+              <NavbarSearchInput type="text" placeholder="Search project by name, skill or author" value={query} onChange={e => queryEntered(e)}/>
               )
               }
           </NavbarSearchField>
