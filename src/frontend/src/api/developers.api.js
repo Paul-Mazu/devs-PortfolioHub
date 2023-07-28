@@ -15,9 +15,22 @@ export async function getAllDevelopers () {
     }
 };
 
-// the filters parameter is simply a placeholder for now for the actual filters we want to use depending on the backend API provided
+// filtered developer search: basic version can only receive a single term and look for matches in relevant fields
 
-export async function getFilteredDevelopers (name, tags) {
+export async function getFilteredDevelopersBasic (query) {
+    try {        
+        let nameMatches = await axios.get(BASE_URL + "api/user/users/", {params: {name: query}}, { withCredentials: true });
+        let tagsMatches = await axios.get(BASE_URL + "api/user/users/", {params: {tags: query}}, { withCredentials: true });
+        let foundDevelopers = nameMatches + tagsMatches
+        return foundDevelopers;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+// filtered developer search: advanced version matches against several parameters at once
+
+export async function getFilteredDevelopersAdvanced (name, tags) {
     try {        
         let foundDevelopers = await axios.get(BASE_URL + "api/user/users/", {params: {name: name, tags: tags}}, { withCredentials: true });
         return foundDevelopers;
