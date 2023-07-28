@@ -19,11 +19,11 @@ export default function DeveloperList() {
       const queryParams = new URLSearchParams(location.search);
       const queryValue = queryParams.get('q');
       getFilteredDevelopersBasic(queryValue)
-        .then((response) => setDevelopers(response[0]))
+        .then((response) => setDevelopers(response))
         .catch(e => setDevelopers([]));
     } else {
       getAllDevelopers()
-        .then((response) => setDevelopers(response.data))
+        .then((response) => setDevelopers(response))
         .catch(e => setDevelopers([]));
     }; 
   }, []

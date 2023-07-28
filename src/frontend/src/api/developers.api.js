@@ -8,8 +8,7 @@ const BASE_URL = "http://35.204.79.162/"
 export async function getAllDevelopers() {
     try {
         let foundDevelopers = await axios.get(BASE_URL + "api/user/users/", { withCredentials: true });
-        console.log(foundDevelopers)
-        return foundDevelopers;
+        return foundDevelopers.data;
     } catch (error) {
         console.log(error);
     }
@@ -22,11 +21,13 @@ export async function getFilteredDevelopersBasic(query) {
         let nameMatches = await axios.get(BASE_URL + "api/user/users/", { params: { name: query } }, { withCredentials: true });
         let tagsMatches = await axios.get(BASE_URL + "api/user/users/", { params: { tags: query } }, { withCredentials: true });
         if (nameMatches.data.length > 0 & tagsMatches.data.length > 0) {
-            return [nameMatches.data, tagsMatches.data]
+            return [nameMatches.data, tagsMatches.data][0]
         } else if (nameMatches.data.length > 0) {
-            return [nameMatches.data]
+            return [nameMatches.data][0]
         } else if (tagsMatches.data.length > 0) {
-            return [tagsMatches.data]
+            return [tagsMatches.data][0]
+        } else {
+            return []
         }
     } catch (error) {
         console.log(error);
