@@ -20,15 +20,9 @@ export async function getFilteredDevelopersBasic(query) {
     try {
         let nameMatches = await axios.get(BASE_URL + "api/user/users/", { params: { name: query } }, { withCredentials: true });
         let tagsMatches = await axios.get(BASE_URL + "api/user/users/", { params: { tags: query } }, { withCredentials: true });
-        if (nameMatches.data.length > 0 & tagsMatches.data.length > 0) {
-            return [nameMatches.data, tagsMatches.data][0]
-        } else if (nameMatches.data.length > 0) {
-            return [nameMatches.data][0]
-        } else if (tagsMatches.data.length > 0) {
-            return [tagsMatches.data][0]
-        } else {
-            return []
-        }
+        let foundDevelopers = [];
+        foundDevelopers.push(...nameMatches.data, ...tagsMatches.data);
+        return foundDevelopers
     } catch (error) {
         console.log(error);
     }
