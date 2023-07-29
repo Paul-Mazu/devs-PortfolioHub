@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// with strict mode enabled, APIs get called twice 
+// https://legacy.reactjs.org/docs/strict-mode.html
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
