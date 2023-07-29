@@ -39,7 +39,7 @@ export async function getFilteredDevelopersBasic(query) {
 export async function getFilteredDevelopersAdvanced(name, tags) {
     try {
         let foundDevelopers = await axios.get(BASE_URL + "api/user/users/", { params: { name: name, tags: tags } }, { withCredentials: true });
-        return foundDevelopers;
+        return foundDevelopers.data;
     } catch (error) {
         console.log(error);
     }
