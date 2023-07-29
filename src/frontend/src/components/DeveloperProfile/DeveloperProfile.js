@@ -3,7 +3,6 @@ import DeveloperDetail from "../DeveloperDetail/DeveloperDetail";
 import { useEffect, useState } from 'react';
 import { useParams, useLocation } from "react-router-dom";
 import { getDeveloperById } from "../../api/developers.api";
-import { getFilteredDevelopers } from "../../api/developers.api";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 export default function DeveloperProfile() {

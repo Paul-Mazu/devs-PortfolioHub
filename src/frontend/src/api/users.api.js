@@ -3,7 +3,8 @@ import { setToken } from "../helpers/helpers.js";
 
 // a file to bundle and export the various user APIs (create, login (token), logout, delete)
 
-const BASE_URL = "http://localhost:8000/"
+// const BASE_URL = "http://localhost:8000/"
+const BASE_URL = "http://35.204.79.162/"
 
 // {
 //     "email": "user@example.com",

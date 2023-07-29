@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import {
   NavbarContainer,
   LeftContainer,
@@ -7,18 +8,27 @@ import {
   NavbarInnerContainer,
   NavbarLinkContainer,
   NavbarLink,
-  Logo,
+  ImgLogo,
+  TextLogo,
   OpenLinksButton,
   NavbarLinkExtended,
-  RightOptions
+  RightOptions,
+  NavbarSearchField,
+  NavbarSearchInput
 } from "./styles/Navbar.style";
-import LogoImg from "./logo4.png";
+// import LogoImg from "./logo4.png";
+import LogoText from "../../images/text-gradient.png";
+import LogoImg from "../../images/logo-gradpurple.png";
 import { getCurrentUser } from "../../api/users.api";
 import { getToken, destroyToken } from "../../helpers/helpers.js";
 
 function Navbar() {
   const [extendNavbar, setExtendNavbar] = useState(false);
   const [activeUser, setActiveUser] = useState(false);
+  const [query, setQuery] = useState('');
+
+  const path = useLocation().pathname;
+  const location = path.split("/")[1];
 
   const userToken = getToken();
 
@@ -28,18 +38,34 @@ function Navbar() {
       .catch(e => setActiveUser(false));
   }, []);
 
+  const searchDatabase = (e) => {
+    e.preventDefault();
+
+    if (location !== "projects") {
+      window.location.assign("/developers?q=" + e.target[0].value);
+    } else {
+      window.location.assign("/projects?q=" + e.target[0].value)
+    }
+  }
+
+  const queryEntered = (e) => {
+    setQuery(e.target.value);
+    // buttonEnabled(username, password)
+}
+
   return (
     <NavbarContainer extendNavbar={extendNavbar}>
       <NavbarInnerContainer>
         <LeftContainer>
           <NavbarLinkContainer>
             <NavbarLink to="/">
-              <Logo src={LogoImg}></Logo>
+              <ImgLogo src={LogoImg}></ImgLogo>
+              <TextLogo src={LogoText}></TextLogo>
             </NavbarLink>
-            <RightOptions>
+            {/* <RightOptions> */}
               <NavbarLink to="/developers"> Developers</NavbarLink>
               <NavbarLink to="/projects"> Projects</NavbarLink>
-            </RightOptions>
+            {/* </RightOptions> */}
             <OpenLinksButton
               onClick={() => {
                 setExtendNavbar((curr) => !curr);
@@ -50,6 +76,14 @@ function Navbar() {
           </NavbarLinkContainer>
         </LeftContainer>
         <RightContainer>
+          <NavbarSearchField onSubmit={searchDatabase}>
+            { location !== "projects" ? (
+              <NavbarSearchInput type="text" placeholder="Search developer by name or skill" value={query} onChange={e => queryEntered(e)}/>
+              ) : (
+              <NavbarSearchInput type="text" placeholder="Search project by name, skill or author" value={query} onChange={e => queryEntered(e)}/>
+              )
+              }
+          </NavbarSearchField>
           {!activeUser &&
             <NavbarLink to="/register"> Create profile</NavbarLink>
           }
