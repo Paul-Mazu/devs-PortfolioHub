@@ -13,8 +13,6 @@ const BASE_URL = "http://35.204.79.162/"
 //   }
 
 export async function userRegistration (name, email, password) {
-    console.log(name, email);
-
     try {
         await axios({
             method: 'post',
@@ -36,6 +34,28 @@ export async function userRegistration (name, email, password) {
         // const registerData = await registerResponse;
         //need to return response as below
         // return registerData.json();
+    }
+}
+export async function userEdit (userToken, data) {
+
+    // data is an object with key-value pairs
+    // extract keys and values to pass into axios data parameter dynamically
+
+    try {
+        await axios({
+            method: 'patch',
+            withCredentials: true,
+            url: BASE_URL + "/api/user/me/",
+            headers: { Authorization: `token ${userToken}`},
+            data: {
+                name: data.name,
+                email: data.email
+            }
+        });
+        console.log(`User ${data.name} updated successfully`);
+    }
+    catch (err) {
+        console.log(err.message);
     }
 }
 
