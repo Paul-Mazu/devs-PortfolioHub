@@ -60,7 +60,7 @@ export default function DeveloperDetail({ developer, isUser }) {
             {isUser === true &&
                 <div>
                     <p className="description">Welcome to your profile, {developer.name}</p>
-                    <a href="/">Edit your profile</a>
+                    <a href="/profile/edit">Edit your profile</a>
                     <a href="/">Add a project</a>
                 </div>                
             }
@@ -74,6 +74,8 @@ export default function DeveloperDetail({ developer, isUser }) {
             <h3>Short Description: {developer.short_desc}</h3>
             <h3>{listTags}</h3>
             <p>Bio: {developer.bio}</p>
+            <p>Highlighted Projects: </p>
+            <a>See all Projects by {developer.name}</a>
 
             {/* code for social media links */}
             <p>Socials: </p>
