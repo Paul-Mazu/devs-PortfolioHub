@@ -1,4 +1,6 @@
 import "./DeveloperDetail.css";
+import placeholderImage from "../../images/Drawing.png";
+
 
 // {
 //   "id": 0,
@@ -36,20 +38,41 @@ export default function DeveloperDetail({ developer, isUser }) {
     //     }
     // };
 
+  const checkImageUrl = (image) => {
+    if (image === null) {
+      return placeholderImage
+    } else {
+      return image
+    }
+  };
+  const checkPosition = (developer) => {
+    if (developer.working_at != null) {
+      return `${developer.title} at ${developer.working_at}`;
+    } else {
+      return developer.title;
+    }
+  }
+  const tags = developer.tags;
+  const listTags = tags.map((d, idx) => <h3 className="tag" key={idx}>{d.name}</h3>);
+
     return (
         <div className="container-main">
             {isUser === true &&
-                <p className="description">Welcome to your profile, {developer.name}</p>
+                <div>
+                    <p className="description">Welcome to your profile, {developer.name}</p>
+                    <a href="/">Edit your profile</a>
+                    <a href="/">Add a project</a>
+                </div>                
             }
             {isUser === false &&
                 <p className="description">Welcome to {developer.name}'s profile</p>
             }
-            <img src={developer.profile_image} alt="Developer profile"></img>
+            <img className={"profile-dev-pic " + developer.status_open_to_work} src={checkImageUrl(developer.profile_image)} alt="Developer profile"></img>
             <h2>Name: {developer.name}</h2>
             <h2>Email: {developer.email}</h2>
-            <h3>Position: {developer.title} {developer.working_at}</h3>
+            <h3>Position: {checkPosition(developer)}</h3>
             <h3>Short Description: {developer.short_desc}</h3>
-            {/* <h3>{developer.tags}</h3> */}
+            <h3>{listTags}</h3>
             <p>Bio: {developer.bio}</p>
 
             {/* code for social media links */}
