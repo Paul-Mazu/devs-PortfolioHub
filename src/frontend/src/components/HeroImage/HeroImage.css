@@ -5,7 +5,7 @@
     height: 100vh;
     width: 100%;
     z-index: -1;
-    background: linear-gradient(180deg, #A90051 0%, #1E0031 100%), linear-gradient(121.28deg, #340067 0%, #000000 38.54%), linear-gradient(180deg, #00FF19 0%, #000000 100%), linear-gradient(294.84deg, #FF0000 0%, #450000 100%), linear-gradient(121.28deg, #32003A 0%, #FF4040 100%), radial-gradient(50% 72.12% at 50% 50%, #EB00FF 0%, #110055 100%);
+    background: linear-gradient(180deg, #ebc0ee 0%, #453750 100%), linear-gradient(121.28deg, #453750 0%, #0C0910 38.54%), linear-gradient(180deg, #9aaab1 0%, #9959ed 100%), linear-gradient(294.84deg, #0d0d0d 0%, #0d0b22 100%), linear-gradient(121.28deg, #160f1d 0%, #202222 100%), radial-gradient(50% 72.12% at 50% 50%, #846787 0%, #000000 100%);
     background-blend-mode: color-dodge, screen, overlay, exclusion, difference, normal;
     /* background-repeat: no-repeat;
     background-attachment: fixed;
@@ -18,7 +18,7 @@
     background-blend-mode: color-dodge, overlay, difference, difference, normal;
 }
 
-.heroimage.my-profile {
+.heroimage.profile {
     background: linear-gradient(121.28deg, #31BC00 0%, #000000 100%), linear-gradient(180deg, #5200FF 0%, #1A0050 100%), linear-gradient(341.1deg, #FF0000 7.52%, #1700A4 77.98%), radial-gradient(49.82% 80.51% at 49.82% 50%, #5A0069 0%, #FF3D00 100%), radial-gradient(50% 72.12% at 50% 50%, #EB00FF 0%, #110055 100%);
     background-blend-mode: color-dodge, overlay, difference, difference, normal;
 }
