@@ -16,7 +16,8 @@ export default function DeveloperProfile() {
     getDeveloperById(id)
       .then((response) => setDeveloper(response.data))
       .then(() => setLoading(false))
-      .catch(e => setDeveloper(false));
+      .catch(e => setDeveloper(false))
+      .then(() => setLoading(false));
   }, []);
 
   return (
@@ -30,7 +31,7 @@ export default function DeveloperProfile() {
           developer={developer}
         />
       }  
-      {!loading & !developer &&
+      {!loading && !developer &&
         <ErrorMessage
           e={
             {
