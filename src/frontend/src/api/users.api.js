@@ -45,13 +45,15 @@ export async function userEdit (userToken, data) {
         await axios({
             method: 'patch',
             withCredentials: true,
-            url: BASE_URL + "/api/user/me/",
+            url: BASE_URL + "api/user/me/",
             headers: { Authorization: `token ${userToken}`},
             data: {
                 name: data.name,
-                email: data.email
+                email: data.email,
+                profile_image: data.profile_image
             }
         });
+        window.location = "/profile";
         console.log(`User ${data.name} updated successfully`);
     }
     catch (err) {
