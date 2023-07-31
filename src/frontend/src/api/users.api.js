@@ -40,6 +40,8 @@ export async function userEdit (userToken, data) {
 
     // data is an object with key-value pairs
     // extract keys and values to pass into axios data parameter dynamically
+    Object.keys(data).forEach((k) => data[k] == undefined && delete data[k]);
+    console.log(data);
 
     try {
         await axios({
@@ -47,11 +49,7 @@ export async function userEdit (userToken, data) {
             withCredentials: true,
             url: BASE_URL + "api/user/me/",
             headers: { Authorization: `token ${userToken}`},
-            data: {
-                name: data.name,
-                email: data.email,
-                profile_image: data.profile_image
-            }
+            data: data
         });
         window.location = "/profile";
         console.log(`User ${data.name} updated successfully`);
