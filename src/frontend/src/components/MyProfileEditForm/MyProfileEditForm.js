@@ -6,40 +6,44 @@ import { getToken } from "../../helpers/helpers.js";
 export default function RegistrationForm() {
     const [activeUser, setActiveUser] = useState(false);
     const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        getCurrentUser(userToken)
+          .then((response) => setActiveUser(response.data))
+          .then(() => setLoading(false))
+          .catch(e => setActiveUser(false))
+          .then(() => setLoading(false));
+      }, []);
+
     const [data, setData] = useState({
-        name: "",
-        email: "",
-        profile_image: "",
-        short_desc: "",
-        tags: [],
-        bio: "",
-        title: "",
-        working_at: "",
-        address: "",
-        status_open_to_work: false,
-        github_link: "",
-        linkedin_link: "",
-        website_link: "",
+        name: undefined,
+        email: undefined,
+        profile_image: undefined,
+        short_desc: undefined,
+        tags: undefined,
+        bio: undefined,
+        title: undefined,
+        working_at: undefined,
+        address: undefined,
+        status_open_to_work: undefined,
+        github_link: undefined,
+        linkedin_link: undefined,
+        website_link: undefined,
     });
   
     const userToken = getToken();
-  
-    useEffect(() => {
-      getCurrentUser(userToken)
-        .then((response) => setActiveUser(response.data))
-        .then(() => setLoading(false))
-        .catch(e => setActiveUser(false))
-        .then(() => setLoading(false));
-    }, []);
 
     const handleInputChange = (e) => {
         const { id, value } = e.target;
-        setData({id: value});
+        setData({
+            ...data,
+            [id]: value
+        });
     }
 
     const handleSubmit = (e) => {
+        e.preventDefault();
         // package modified fields into a single data object to submit to edit form
-        const data = e.target
         userEdit(userToken, data)
     }
 
@@ -47,7 +51,7 @@ export default function RegistrationForm() {
 
     return (
         <div className="registration-container">
-            <div className="form-card">
+            <form className="form-card" onSubmit={(e) => handleSubmit(e)}>
                 <h2>Edit Form</h2>
                 <h3>Edit your profile data</h3>
 
@@ -67,9 +71,9 @@ export default function RegistrationForm() {
                 </div>
 
                 {/* <Link to="/profile"> */}
-                <button onClick={(e) => handleSubmit(e)} type="submit" className='form-button'>Submit edits</button>
+                <button type="submit" className='form-button'>Submit edits</button>
                 {/* </Link> */}
-            </div>
+            </form>
         </div>
     )
 }
