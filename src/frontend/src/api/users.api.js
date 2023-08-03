@@ -40,12 +40,12 @@ export async function userEdit (userToken, data) {
             withCredentials: true,
             url: BASE_URL + "api/user/me/",
             headers: { 
-                'content-type': 'multipart/form-data',
+                // 'content-type': 'multipart/form-data',
                 Authorization: `token ${userToken}`
             },
             data: data
         });
-        window.location = "/profile";
+        // window.location = "/profile";
         console.log(`User updated successfully`);
     }
     catch (err) {
