@@ -1,5 +1,6 @@
 import "./MyProfileEditForm.css";
 import React, { useEffect, useState } from 'react';
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import { userEdit, getCurrentUser } from "../../api/users.api";
 import { getToken } from "../../helpers/helpers.js";
 
@@ -55,7 +56,10 @@ export default function RegistrationForm() {
 
     return (
         <div className="main">
- 
+            {loading &&
+                <p>LOADING...</p>
+            }
+            {!loading && activeUser &&
                 <div className="registration-container">
                     <form className="form-card" onSubmit={(e) => handleSubmit(e)}>
                         <h2>Edit Form</h2>
@@ -85,7 +89,17 @@ export default function RegistrationForm() {
                         {/* </Link> */}
                     </form>
                 </div>
-
+            }
+            {!loading && !activeUser &&
+                <ErrorMessage
+                    e={
+                        {
+                            code: 401,
+                            message: "You are not allowed to view this page without logging in."
+                        }
+                    }
+                />
+            }
         </div>
     )
 }
