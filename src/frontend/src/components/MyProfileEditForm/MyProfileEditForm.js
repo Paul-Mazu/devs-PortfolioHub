@@ -2,7 +2,7 @@ import "./MyProfileEditForm.css";
 import React, { useEffect, useState } from 'react';
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import { userEdit, getCurrentUser } from "../../api/users.api";
-import { getToken } from "../../helpers/helpers.js";
+import { getToken, populateTags } from "../../helpers/helpers.js";
 
 export default function RegistrationForm() {
     const [data, setData] = useState({});
@@ -43,7 +43,7 @@ export default function RegistrationForm() {
         });
     }
 
-    console.log(data)
+    console.log(data);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -80,6 +80,12 @@ export default function RegistrationForm() {
                             <div className="input-field">
                                 <label className="form-label" htmlFor="status_open_to_work">Looking for Work:</label>
                                 <input className="input" type="checkbox" id="status_open_to_work" onChange={(e) => handleCheckboxChange(e)} defaultChecked={activeUser.status_open_to_work} />
+                            </div>
+                            <div className="input-field">
+                                <label className="form-label" htmlFor="tags">Skill Tags:</label>
+                                <input className="input" type="checkbox" id="tags" onChange={(e) => setData({tags: populateTags()})} />
+                                
+                                {/* <input className="input" type="text" id="tags" onChange={(e) => handleCheckboxChange(e)} defaultChecked={activeUser.tags} /> */}
                             </div>
                             <div className="input-field">
                                 <label className="form-label" htmlFor="title">Title:</label>
