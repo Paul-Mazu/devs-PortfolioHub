@@ -81,6 +81,34 @@ export default function RegistrationForm() {
                                 <label className="form-label" htmlFor="status_open_to_work">Looking for Work:</label>
                                 <input className="input" type="checkbox" id="status_open_to_work" onChange={(e) => handleCheckboxChange(e)} defaultChecked={activeUser.status_open_to_work} />
                             </div>
+                            <div className="input-field">
+                                <label className="form-label" htmlFor="title">Title:</label>
+                                <input className="input" type="text" id="title" value={data.title} onChange={(e) => handleInputChange(e)} placeholder={activeUser.title} />
+                            </div>
+                            <div className="input-field">
+                                <label className="form-label" htmlFor="working_at">Company:</label>
+                                <input className="input" type="text" id="working_at" value={data.working_at} onChange={(e) => handleInputChange(e)} placeholder={activeUser.working_at} />
+                            </div>
+                            <div className="input-field">
+                                <label className="form-label" htmlFor="short_desc">Short Description:</label>
+                                <input className="input" type="text" id="short_desc" value={data.short_desc} onChange={(e) => handleInputChange(e)} placeholder={activeUser.short_desc} />
+                            </div>
+                            <div className="input-field">
+                                <label className="form-label" htmlFor="bio">Biography:</label>
+                                <input className="input" type="text" id="bio" value={data.bio} onChange={(e) => handleInputChange(e)} placeholder={activeUser.bio} />
+                            </div>
+                            <div className="input-field">
+                                <label className="form-label" htmlFor="address">Country of Residence:</label>
+                                <input className="input" type="text" id="address" value={data.address} onChange={(e) => handleInputChange(e)} placeholder={activeUser.address} />
+                            </div>
+                            <div className="input-field">
+                                <label className="form-label" htmlFor="github_link">Github Profile:</label>
+                                <input className="input" type="text" id="github_link" value={data.github_link} onChange={(e) => handleInputChange(e)} placeholder={activeUser.github_link} />
+                            </div>
+                            <div className="input-field">
+                                <label className="form-label" htmlFor="linkedin_link">LinkedIn Profile:</label>
+                                <input className="input" type="text" id="linkedin_link" value={data.linkedin_link} onChange={(e) => handleInputChange(e)} placeholder={activeUser.linkedin_link} />
+                            </div>
                         </div>
                         <button type="submit" className='form-button' disabled={Object.keys(data).length === 0 ? true : false} >Submit edits</button>
                         <button type="reset" className='form-button'>Reset edits</button>
