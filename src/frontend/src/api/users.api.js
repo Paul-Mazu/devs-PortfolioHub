@@ -19,7 +19,7 @@ export async function userRegistration (name, email, password) {
             }
         });
         console.log(`User ${name} registered successfully`);
-        userLogIn(email, password);
+        userLogIn(email, password, true);
     }
     catch (err) {
         console.log(err.message);
@@ -68,7 +68,7 @@ export async function userLogIn (email, password, edit = false) {
         }).then(response => response.data.token);
         console.log(`User signed in successfully`);
         setToken(token);
-        window.location = "/profile";
+        if (edit) {window.location = "/profile/edit"} else {window.location = "/profile";}
     }
     catch (err) {
         console.log(err.message);
