@@ -1,6 +1,7 @@
 export const setToken = (userToken) => {
     sessionStorage.setItem('token', JSON.stringify(userToken));
 };
+
 export const destroyToken = () => {
     sessionStorage.removeItem('token');
 };
