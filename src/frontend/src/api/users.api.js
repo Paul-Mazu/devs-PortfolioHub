@@ -90,7 +90,10 @@ export async function userEdit (userToken, data) {
             method: 'patch',
             withCredentials: true,
             url: BASE_URL + "api/user/me/",
-            headers: { Authorization: `token ${userToken}`},
+            headers: { 
+                'content-type': 'multipart/form-data',
+                Authorization: `token ${userToken}`
+            },
             data: data
         });
         // window.location = "/profile";
