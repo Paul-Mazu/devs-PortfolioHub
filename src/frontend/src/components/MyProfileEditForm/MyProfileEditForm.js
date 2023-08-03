@@ -84,6 +84,7 @@ export default function RegistrationForm() {
                         </div>
                         <button type="submit" className='form-button' disabled={Object.keys(data).length === 0 ? true : false} >Submit edits</button>
                         <button type="reset" className='form-button'>Reset edits</button>
+                        <button type="reset" className='form-button' onClick={(e) => window.location="/profile"}>Cancel and Return to Profile</button>
                     </form>
                 </div>
             }
