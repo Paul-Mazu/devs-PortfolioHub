@@ -44,7 +44,6 @@ export default function RegistrationForm() {
     }
 
     console.log(data)
-    // console.log(activeUser)
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -61,7 +60,7 @@ export default function RegistrationForm() {
             }
             {!loading && activeUser &&
                 <div className="registration-container">
-                    <form className="form-card" onSubmit={(e) => handleSubmit(e)}>
+                    <form className="form-card" onSubmit={(e) => handleSubmit(e)} onReset={(e) => setData({})} >
                         <h2>Edit Form</h2>
                         <h3>Edit your profile data</h3>
 
@@ -83,10 +82,8 @@ export default function RegistrationForm() {
                                 <input className="input" type="checkbox" id="status_open_to_work" onChange={(e) => handleCheckboxChange(e)} defaultChecked={activeUser.status_open_to_work} />
                             </div>
                         </div>
-
-                        {/* <Link to="/profile"> */}
-                        <button type="submit" className='form-button'>Submit edits</button>
-                        {/* </Link> */}
+                        <button type="submit" className='form-button' disabled={Object.keys(data).length === 0 ? true : false} >Submit edits</button>
+                        <button type="reset" className='form-button'>Reset edits</button>
                     </form>
                 </div>
             }
@@ -103,8 +100,3 @@ export default function RegistrationForm() {
         </div>
     )
 }
-
-        // For now: disabled link, redirect from frontend to next page when post request is successful. Still janky
-        // window.location.assign("/profile");
-        // window.location = "/profile";
-        // return <Navigate to="/profile" />
