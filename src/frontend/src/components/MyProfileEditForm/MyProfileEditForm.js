@@ -41,6 +41,13 @@ export default function RegistrationForm() {
         });
     }
 
+    const handleImageChange = (e) => {
+        setData({
+            ...data,
+            profile_image: e.target.files[0]
+        });
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         // package modified fields into a single data object to submit to edit form
@@ -66,7 +73,7 @@ export default function RegistrationForm() {
                     </div>
                     <div className="input-field">
                         <label className="form-label" htmlFor=""></label>
-                        <input className="input" type="text" id="profile_image" value={data.profile_image} onChange={(e) => handleInputChange(e)} placeholder={activeUser.profile_image}/>
+                        <input className="input" type="file" id="profile_image" accept="image/png, image/jpeg" onChange={(e) => handleImageChange(e)} />
                     </div>
                 </div>
 
