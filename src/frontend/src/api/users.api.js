@@ -25,6 +25,7 @@ export async function userRegistration (name, email, password) {
         console.log(err.message);
     }
 }
+
 export async function userEdit (userToken, data) {   
 
     // data is an object with key-value pairs
@@ -44,7 +45,7 @@ export async function userEdit (userToken, data) {
             },
             data: data
         });
-        window.location = "/profile/edit";
+        window.location = "/profile";
         console.log(`User updated successfully`);
     }
     catch (err) {
