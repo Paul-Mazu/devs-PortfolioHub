@@ -4,11 +4,13 @@ import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import { userEdit, getCurrentUser } from "../../api/users.api";
 import { getAllTags } from "../../api/tags.api";
 import { getToken } from "../../helpers/helpers.js";
+import { ReactSearchAutocomplete } from 'react-search-autocomplete'
 
 export default function RegistrationForm() {
     const [data, setData] = useState({});
     const [activeUser, setActiveUser] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [items, setItems] = useState([]);
 
     const userToken = getToken();
 
@@ -20,6 +22,11 @@ export default function RegistrationForm() {
             .then(() => setLoading(false));
     }, []);
 
+    useEffect(() => {
+        callTagsAPI()
+            .then((response) => setItems(response))
+            .catch(e => setItems([]));
+    }, []);
 
     const handleInputChange = (e) => {
         const { id, value } = e.target;
@@ -54,12 +61,42 @@ export default function RegistrationForm() {
 
     const callTagsAPI = async () => {
         let foundTags = await getAllTags()
-            .then((e) => e.map((obj, i) => ({...obj, id: i})))
+            .then((e) => e.map((obj, i) => ({ ...obj, id: i })))
             // .then((e) => e.map(obj => obj.name))
             .catch((err) => console.log(err));
         return foundTags
     };
-    console.log(callTagsAPI());
+
+
+    const handleOnSearch = (string, results) => {
+        console.log(string, results);
+    };
+
+    const handleOnHover = (result) => {
+        console.log(result);
+    };
+
+    const handleOnSelect = (item) => {
+        console.log(item);
+    };
+
+    const handleOnFocus = () => {
+        console.log("Focused");
+    };
+
+    const handleOnClear = () => {
+        console.log("Cleared");
+    };
+
+    const formatResult = (item) => {
+        console.log(item);
+        return (
+            <div className="result-wrapper">
+                <span className="result-span">id: {item.id}</span>
+                <span className="result-span">name: {item.name}</span>
+            </div>
+        );
+    };
 
     // should also contain various validation functions for email, password and the form itself
 
@@ -93,7 +130,33 @@ export default function RegistrationForm() {
                             </div>
                             <div className="input-field">
                                 <label className="form-label" htmlFor="tags">Skill Tags:</label>
-                                
+                                <ReactSearchAutocomplete
+                                    items={items}
+                                    resultStringKeyName="name" // String to display in the results
+                                    onSearch={handleOnSearch}
+                                    onHover={handleOnHover}
+                                    onSelect={handleOnSelect}
+                                    onFocus={handleOnFocus}
+                                    onClear={handleOnClear}
+                                    showIcon={false}
+                                    styling={{
+                                        height: "34px",
+                                        border: "1px solid darkgreen",
+                                        borderRadius: "4px",
+                                        backgroundColor: "white",
+                                        boxShadow: "none",
+                                        hoverBackgroundColor: "lightgreen",
+                                        color: "darkgreen",
+                                        fontSize: "12px",
+                                        fontFamily: "Courier",
+                                        iconColor: "green",
+                                        lineColor: "lightgreen",
+                                        placeholderColor: "darkgreen",
+                                        clearIconMargin: "3px 8px 0 0",
+                                        zIndex: 2,
+                                    }}
+                                />
+
                                 {/* <input className="input" type="text" id="tags" onChange={(e) => handleCheckboxChange(e)} defaultChecked={activeUser.tags} /> */}
                             </div>
                             <div className="input-field">
@@ -127,7 +190,7 @@ export default function RegistrationForm() {
                         </div>
                         <button type="submit" className='form-button' disabled={Object.keys(data).length === 0 ? true : false} >Submit edits</button>
                         <button type="reset" className='form-button'>Reset edits</button>
-                        <button type="reset" className='form-button' onClick={(e) => window.location="/profile"}>Cancel and Return to Profile</button>
+                        <button type="reset" className='form-button' onClick={(e) => window.location = "/profile"}>Cancel and Return to Profile</button>
                     </form>
                 </div>
             }
