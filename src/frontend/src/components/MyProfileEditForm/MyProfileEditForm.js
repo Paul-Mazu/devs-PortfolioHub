@@ -67,6 +67,10 @@ export default function RegistrationForm() {
         return foundTags
     };
 
+    const tags = activeUser.tags;
+    const listTags = tags.map((d, idx) => <h3 className="tag" key={idx}>{d.name}</h3>);
+
+    // https://www.npmjs.com/package/react-search-autocomplete
 
     const handleOnSearch = (string, results) => {
         console.log(string, results);
@@ -86,16 +90,6 @@ export default function RegistrationForm() {
 
     const handleOnClear = () => {
         console.log("Cleared");
-    };
-
-    const formatResult = (item) => {
-        console.log(item);
-        return (
-            <div className="result-wrapper">
-                <span className="result-span">id: {item.id}</span>
-                <span className="result-span">name: {item.name}</span>
-            </div>
-        );
     };
 
     // should also contain various validation functions for email, password and the form itself
@@ -130,6 +124,7 @@ export default function RegistrationForm() {
                             </div>
                             <div className="input-field">
                                 <label className="form-label" htmlFor="tags">Skill Tags:</label>
+                                <h3>{listTags}</h3>
                                 <ReactSearchAutocomplete
                                     items={items}
                                     resultStringKeyName="name" // String to display in the results
