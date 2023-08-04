@@ -54,7 +54,8 @@ export default function RegistrationForm() {
 
     const callTagsAPI = async () => {
         let foundTags = await getAllTags()
-            .then((e) => e.map(obj => obj.name))
+            .then((e) => e.map((obj, i) => ({...obj, id: i})))
+            // .then((e) => e.map(obj => obj.name))
             .catch((err) => console.log(err));
         return foundTags
     };
