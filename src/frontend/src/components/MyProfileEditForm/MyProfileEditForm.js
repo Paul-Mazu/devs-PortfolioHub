@@ -2,6 +2,7 @@ import "./MyProfileEditForm.css";
 import React, { useEffect, useState } from 'react';
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import { userEdit, getCurrentUser } from "../../api/users.api";
+import { getAllTags } from "../../api/tags.api";
 import { getToken } from "../../helpers/helpers.js";
 
 export default function RegistrationForm() {
@@ -43,13 +44,21 @@ export default function RegistrationForm() {
         });
     }
 
-    console.log(data);
+    // console.log(data);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         // package modified fields into a single data object to submit to edit form
         userEdit(userToken, data)
     }
+
+    const callTagsAPI = async () => {
+        let foundTags = await getAllTags()
+            .then((e) => e.map(obj => obj.name))
+            .catch((err) => console.log(err));
+        return foundTags
+    };
+    console.log(callTagsAPI());
 
     // should also contain various validation functions for email, password and the form itself
 
