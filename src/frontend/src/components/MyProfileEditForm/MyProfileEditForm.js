@@ -67,8 +67,13 @@ export default function RegistrationForm() {
         return foundTags
     };
 
-    const tags = activeUser.tags;
-    const listTags = tags.map((d, idx) => <h3 className="tag" key={idx}>{d.name}</h3>);
+    let listTags = [];
+    let emptyTagsMessage = "No skills selected yet."
+
+    if (activeUser.tags) {
+        const tags = activeUser.tags;
+        let listTags = tags.map((d, idx) => <h3 className="tag" key={idx}>{d.name}</h3>);
+    };
 
     // https://www.npmjs.com/package/react-search-autocomplete
 
@@ -124,7 +129,7 @@ export default function RegistrationForm() {
                             </div>
                             <div className="input-field">
                                 <label className="form-label" htmlFor="tags">Skill Tags:</label>
-                                <h3>{listTags}</h3>
+                                <h3>{(listTags !== []) ? listTags : emptyTagsMessage}</h3>
                                 <ReactSearchAutocomplete
                                     items={items}
                                     resultStringKeyName="name" // String to display in the results
@@ -136,17 +141,17 @@ export default function RegistrationForm() {
                                     showIcon={false}
                                     styling={{
                                         height: "34px",
-                                        border: "1px solid darkgreen",
+                                        border: "1px solid #0C0910",
                                         borderRadius: "4px",
-                                        backgroundColor: "white",
+                                        backgroundColor: "#F0F6F6",
                                         boxShadow: "none",
-                                        hoverBackgroundColor: "lightgreen",
-                                        color: "darkgreen",
+                                        hoverBackgroundColor: "#F26DF9",
+                                        color: "#453750",
                                         fontSize: "12px",
                                         fontFamily: "Courier",
-                                        iconColor: "green",
-                                        lineColor: "lightgreen",
-                                        placeholderColor: "darkgreen",
+                                        iconColor: "#453750",
+                                        lineColor: "#F26DF9",
+                                        placeholderColor: "#453750",
                                         clearIconMargin: "3px 8px 0 0",
                                         zIndex: 2,
                                     }}
