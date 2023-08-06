@@ -69,8 +69,11 @@ export default function RegistrationForm() {
 
     let emptyTagsMessage = "No skills selected yet."
 
-    const tags = activeUser.tags;
-    let listTags = tags ? tags.map((d, idx) => <h3 className="tag" key={idx}>{d.name}</h3>) : [];
+    const checkTags = () => {
+        const tags = data.tags ? data.tags : activeUser.tags;
+        let listTags = tags ? tags.map((d, idx) => <h3 className="tag" key={idx}>{d.name}</h3>) : [];
+        return listTags
+    }
 
     // https://www.npmjs.com/package/react-search-autocomplete
 
@@ -84,6 +87,10 @@ export default function RegistrationForm() {
 
     const handleOnSelect = (item) => {
         console.log(item);
+        setData({
+            ...data,
+            tags: data.tags ? data.tags.concat({name: item.name}) : activeUser.tags.concat([{name: item.name}])
+        })
     };
 
     const handleOnFocus = () => {
@@ -128,7 +135,7 @@ export default function RegistrationForm() {
                             </div>
                             <div className="input-field">
                                 <label className="form-label" htmlFor="tags">Skill Tags:</label>
-                                <h3>{(listTags.length > 0) ? listTags : emptyTagsMessage}</h3>
+                                <h3>{(checkTags().length > 0) ? checkTags() : emptyTagsMessage}</h3>
                                 <ReactSearchAutocomplete
                                     items={items}
                                     resultStringKeyName="name" // String to display in the results
