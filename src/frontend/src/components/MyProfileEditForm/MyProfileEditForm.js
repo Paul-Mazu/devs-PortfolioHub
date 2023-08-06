@@ -67,13 +67,10 @@ export default function RegistrationForm() {
         return foundTags
     };
 
-    let listTags = [];
     let emptyTagsMessage = "No skills selected yet."
 
-    if (activeUser.tags) {
-        const tags = activeUser.tags;
-        let listTags = tags.map((d, idx) => <h3 className="tag" key={idx}>{d.name}</h3>);
-    };
+    const tags = activeUser.tags;
+    let listTags = tags ? tags.map((d, idx) => <h3 className="tag" key={idx}>{d.name}</h3>) : [];
 
     // https://www.npmjs.com/package/react-search-autocomplete
 
@@ -96,6 +93,8 @@ export default function RegistrationForm() {
     const handleOnClear = () => {
         console.log("Cleared");
     };
+
+    console.log(data);
 
     // should also contain various validation functions for email, password and the form itself
 
@@ -129,7 +128,7 @@ export default function RegistrationForm() {
                             </div>
                             <div className="input-field">
                                 <label className="form-label" htmlFor="tags">Skill Tags:</label>
-                                <h3>{(listTags !== []) ? listTags : emptyTagsMessage}</h3>
+                                <h3>{(listTags.length > 0) ? listTags : emptyTagsMessage}</h3>
                                 <ReactSearchAutocomplete
                                     items={items}
                                     resultStringKeyName="name" // String to display in the results
