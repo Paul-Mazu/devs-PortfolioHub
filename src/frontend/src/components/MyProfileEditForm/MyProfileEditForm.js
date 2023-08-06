@@ -187,6 +187,10 @@ export default function RegistrationForm() {
                                 <label className="form-label" htmlFor="linkedin_link">LinkedIn Profile:</label>
                                 <input className="input" type="text" id="linkedin_link" value={data.linkedin_link} onChange={(e) => handleInputChange(e)} placeholder={activeUser.linkedin_link} />
                             </div>
+                            <div className="input-field">
+                                <label className="form-label" htmlFor="website_link">Website:</label>
+                                <input className="input" type="text" id="website_link" value={data.website_link} onChange={(e) => handleInputChange(e)} placeholder={activeUser.website_link} />
+                            </div>
                         </div>
                         <button type="submit" className='form-button' disabled={Object.keys(data).length === 0 ? true : false} >Submit edits</button>
                         <button type="reset" className='form-button'>Reset edits</button>
