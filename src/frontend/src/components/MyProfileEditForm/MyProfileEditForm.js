@@ -69,9 +69,15 @@ export default function RegistrationForm() {
 
     let emptyTagsMessage = "No skills selected yet."
 
+    // array.filter((item) => ! excludes.includes(item));
+
     const checkTags = () => {
-        const tags = data.tags ? data.tags : activeUser.tags;
+        const tags = activeUser.tags;
+        const newTags = data.tags ? data.tags.filter((obj) => ! tags.includes(obj)) : undefined;
         let listTags = tags ? tags.map((d, idx) => <h3 className="tag" key={idx}>{d.name}</h3>) : [];
+        if (newTags) {
+            listTags.push(newTags.map((d, idx) => <h3 className="tag new" key={idx}>{d.name}</h3>));
+        }
         return listTags
     }
 
