@@ -29,23 +29,36 @@ export async function userRegistration (name, email, password) {
 export async function userEdit (userToken, data) {   
 
     // data is an object with key-value pairs
-    // extract keys and values to pass into axios data parameter dynamically
+    // extract keys and values to pass into axios data parameter dynamically, delete empty keys
 
     Object.keys(data).forEach((k) => data[k] === undefined && delete data[k]);
 
     try {
         console.log("Trying...");
+        if (data.profile_image) {
+            console.log("Image data included. Sending as form-data...");
+            await axios({
+                method: 'patch',
+                withCredentials: true,
+                url: BASE_URL + "api/user/me/",
+                headers: { 
+                    'content-type': 'multipart/form-data',
+                    Authorization: `token ${userToken}`
+                },
+                data: {"profile_image": data["profile_image"]}
+            });
+            delete data["profile_image"]
+        }
         await axios({
             method: 'patch',
             withCredentials: true,
             url: BASE_URL + "api/user/me/",
             headers: { 
-                // 'content-type': 'multipart/form-data',
                 Authorization: `token ${userToken}`
             },
             data: data
         });
-        // window.location = "/profile";
+        window.location = "/profile";
         console.log(`User updated successfully`);
     }
     catch (err) {
