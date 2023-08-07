@@ -7,6 +7,7 @@ import DeveloperList from "./components/DeveloperList/DeveloperList";
 import RegistrationForm from "./components/RegistrationForm/RegistrationForm";
 import LogInForm from "./components/LogIn/LogIn";
 import MyProfile from "./components/MyProfile/MyProfile";
+import MyProfileEditForm from "./components/MyProfileEditForm/MyProfileEditForm";
 import DeveloperProfile from "./components/DeveloperProfile/DeveloperProfile";
 import Footer from "./components/Footer/Footer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -25,6 +26,7 @@ function App() {
           <Route path="register" element={<RegistrationForm />} />
           <Route path="login" element={<LogInForm />} />
           <Route path="profile" element={<MyProfile />} />
+          <Route path="profile/edit" element={<MyProfileEditForm />} />
         </Routes>
       </BrowserRouter>
       <Footer />

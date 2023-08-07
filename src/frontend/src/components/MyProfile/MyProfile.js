@@ -7,24 +7,30 @@ import { getToken } from "../../helpers/helpers.js";
 
 export default function MyProfile() {
   const [activeUser, setActiveUser] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const userToken = getToken();
 
   useEffect(() => {
     getCurrentUser(userToken)
       .then((response) => setActiveUser(response.data))
-      .catch(e => setActiveUser(false));
+      .then(() => setLoading(false))
+      .catch(e => setActiveUser(false))
+      .then(() => setLoading(false));
   }, []);
 
   return (
-    <div className="main">
-      {activeUser &&
+    <div className="main">      
+      {loading && 
+        <p>LOADING...</p>      
+      }
+      {!loading && activeUser &&
         <DeveloperDetail
           isUser={true}
           developer={activeUser}
         />
       }
-      {!activeUser &&
+      {!loading && !activeUser &&
         <ErrorMessage
           e={
             {
