@@ -48,7 +48,9 @@ export function DeveloperCard({ developer }) {
     }
   }
 
-  const tags = developer.tags;
+  // for the card: only use the first 5 tags (hardcoded now)
+
+  const tags = developer.tags.slice(0, 5);
   const listTags = tags.map((d, idx) => <h3 className="tag" key={idx}>{d.name}</h3>);
 
   return (
