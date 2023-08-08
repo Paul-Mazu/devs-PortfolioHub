@@ -1,0 +1,4 @@
+.new {
+    /* box shadow for inside border */
+    box-shadow:0px 0px 0px 3px #F26DF9 inset;
+}

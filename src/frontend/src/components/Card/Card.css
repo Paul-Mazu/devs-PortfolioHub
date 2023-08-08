@@ -5,7 +5,7 @@ a {
 
 .card-main {
     box-sizing: border-box;
-    background-color: aliceblue;
+    background-color: #F0F6F6;
     min-width: 325px;
     width: 30vw;
     min-height: 250px;
@@ -14,7 +14,7 @@ a {
     padding: 10px;
     text-align: left;
     border-radius: 5px;
-    color: #000;
+    color: #0C0910;
 }
 
 .card-header {
@@ -34,12 +34,12 @@ a {
     overflow: hidden;
     object-fit: cover;
     margin-right: 20px;
-    border: 5px solid #131313;
+    border: 5px solid #0C0910;
 }
 
 .card-dev-pic.true {
     position: relative;
-    background: linear-gradient(10deg, rgb(3, 3, 255), rgb(68, 68, 255) 45%, #131313) border-box;
+    background: linear-gradient(10deg, #21add8, #46d4ff 45%, #0C0910 90%) border-box;
     border-radius: 50em;
     border: 5px solid transparent;
 }

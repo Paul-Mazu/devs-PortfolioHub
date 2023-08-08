@@ -2,7 +2,7 @@ import "./Card.css"
 import * as React from "react";
 import { Link } from "react-router-dom";
 import slugify from "react-slugify";
-import placeholderImage from "../../images/contemplative-reptile.jpg";
+import placeholderImage from "../../images/Drawing.png";
 
 // for reference: format of developer profile
 

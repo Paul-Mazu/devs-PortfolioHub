@@ -2,24 +2,38 @@ import axios from "axios";
 
 // a file to bundle and export the various developer APIs (find all, filter, find one by ID, find active user)
 
-const BASE_URL = "http://localhost:8000/"
+// const BASE_URL = "http://localhost:8000/"
+const BASE_URL = "http://35.204.79.162/"
 
-export async function getAllDevelopers () {
-    try {        
+export async function getAllDevelopers() {
+    try {
         let foundDevelopers = await axios.get(BASE_URL + "api/user/users/", { withCredentials: true });
-        console.log(foundDevelopers)
-        return foundDevelopers;
+        return foundDevelopers.data;
     } catch (error) {
         console.log(error);
     }
 };
 
-// the filters parameter is simply a placeholder for now for the actual filters we want to use depending on the backend API provided
+// filtered developer search: basic version can only receive a single term and look for matches in relevant fields
 
-export async function getFilteredDevelopers (name, tags) {
-    try {        
-        let foundDevelopers = await axios.get(BASE_URL + "api/user/users/", {params: {name: name, tags: tags}}, { withCredentials: true });
-        return foundDevelopers;
+export async function getFilteredDevelopersBasic(query) {
+    try {
+        let nameMatches = await axios.get(BASE_URL + "api/user/users/", { params: { name: query } }, { withCredentials: true });
+        let tagsMatches = await axios.get(BASE_URL + "api/user/users/", { params: { tags: query } }, { withCredentials: true });
+        let foundDevelopers = [];
+        foundDevelopers.push(...nameMatches.data, ...tagsMatches.data);
+        return foundDevelopers
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+// filtered developer search: advanced version matches against several parameters at once
+
+export async function getFilteredDevelopersAdvanced(name, tags) {
+    try {
+        let foundDevelopers = await axios.get(BASE_URL + "api/user/users/", { params: { name: name, tags: tags } }, { withCredentials: true });
+        return foundDevelopers.data;
     } catch (error) {
         console.log(error);
     }
@@ -27,8 +41,8 @@ export async function getFilteredDevelopers (name, tags) {
 
 // the actual implementation depends on the backend API - i.e. id in params or in url? /api/user/users/{id}/
 
-export async function getDeveloperById (id) {
-    try {        
+export async function getDeveloperById(id) {
+    try {
         let foundDeveloper = await axios.get(BASE_URL + "api/user/users/" + id, { withCredentials: true });
         return foundDeveloper;
     } catch (error) {
