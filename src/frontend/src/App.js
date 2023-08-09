@@ -24,6 +24,7 @@ function App() {
               <>
                 <Navbar />
                 <Outlet />
+                <Footer />
               </>
             )}
           >
@@ -37,7 +38,6 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-      <Footer />
     </div>
   );
 }
