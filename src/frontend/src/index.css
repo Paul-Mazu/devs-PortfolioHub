@@ -4,7 +4,7 @@ body {
   margin: 0;
   min-height: 100%;
 
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: -apple-system, BlinkMacSystemFont, 'Arial', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -18,9 +18,35 @@ code {
     monospace;
 }
 
-.discription {
-  font-size: 150px;
-  color: greenyellow;
+.animate-spin {
+  transform-origin: 50% 60.2%;
+  animation: rotation 18s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+      transform: rotate(0deg);
+      opacity: 100%;
+  }
+  10% {
+      opacity: 80%;
+  }
+  30% {
+      opacity: 100%;
+  }
+  50% {
+      opacity: 70%;
+  }
+  50% {
+      opacity: 80%;
+  }
+  75% {
+      opacity: 60%;
+  }
+  to {
+      transform: rotate(360deg);
+      opacity: 100%;
+  }
 }
 
 .main {
