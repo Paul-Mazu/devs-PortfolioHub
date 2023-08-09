@@ -5,8 +5,12 @@
     height: 100vh;
     width: 100%;
     z-index: -1;
-    background: linear-gradient(180deg, #ebc0ee 0%, #453750 100%), linear-gradient(121.28deg, #453750 0%, #0C0910 38.54%), linear-gradient(180deg, #9aaab1 0%, #9959ed 100%), linear-gradient(294.84deg, #0d0d0d 0%, #0d0b22 100%), linear-gradient(121.28deg, #160f1d 0%, #202222 100%), radial-gradient(50% 72.12% at 50% 50%, #846787 0%, #000000 100%);
-    background-blend-mode: color-dodge, screen, overlay, exclusion, difference, normal;
+    /* background: #5431A0; */
+    /* background: #5431A0; */
+    background: #2c1f4b;
+    /* background: #0C0910; */
+    /* background: linear-gradient(180deg, #ebc0ee 0%, #453750 100%), linear-gradient(121.28deg, #453750 0%, #0C0910 38.54%), linear-gradient(180deg, #9aaab1 0%, #9959ed 100%), linear-gradient(294.84deg, #0d0d0d 0%, #0d0b22 100%), linear-gradient(121.28deg, #160f1d 0%, #202222 100%), radial-gradient(50% 72.12% at 50% 50%, #846787 0%, #000000 100%);
+    background-blend-mode: color-dodge, screen, overlay, exclusion, difference, normal; */
     /* background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
