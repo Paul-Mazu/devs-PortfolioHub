@@ -1,7 +1,7 @@
 import "./ProjectList.css";
 import React, { useEffect, useState } from 'react';
 import { useLocation } from "react-router-dom";
-import {getFilteredProjectsBasic, getFilteredProjectsAdvanced, getAllProjects } from "../../api/projects.api";
+import { getFilteredProjectsBasic, getFilteredProjectsAdvanced, getAllProjects } from "../../api/projects.api";
 import { ProjectCard } from "../Card/Card";
 
 // import { ProjectCard } from "../Card/Card";
@@ -16,7 +16,7 @@ import { ProjectCard } from "../Card/Card";
 
 export default function ProjectList() {
 
-  const [projects, setProjects] = useState([]);  
+  const [projects, setProjects] = useState([]);
   const location = useLocation();
 
   useEffect(() => {
@@ -27,23 +27,27 @@ export default function ProjectList() {
         .then((response) => setProjects(response))
         .catch(e => setProjects([]));
     } else {
-    getAllProjects()
-      .then((response) => setProjects(response))
-      .catch((e) => setProjects([]));
-  };
+      getAllProjects()
+        .then((response) => setProjects(response))
+        .catch((e) => setProjects([]));
+    };
   }, []
   );
-console.log(projects)
+  console.log(projects)
 
   return (
     <div className="main">
-      <p className="description">Discover the best projects</p>
-      <div className="card-gallery">
-       {projects.map((project) =>
-          <ProjectCard
-            project={project}
-          />)
-        }
+      <div className="list-body">
+        <div className="list-heading">
+          <h2 className="font-jost">Discover the best projects<span className="highlight-cyan">!</span></h2>
+        </div>
+        <div className="card-gallery">
+          {projects.map((project) =>
+            <ProjectCard
+              project={project}
+            />)
+          }
+        </div>
       </div>
     </div>
   );
