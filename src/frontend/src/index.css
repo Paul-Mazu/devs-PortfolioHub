@@ -1,14 +1,98 @@
 /* This Stylesheet houses styles that are reused across all components */
 
+/* import local fonts by declaring font-faces for relevant weights */
+
+/* Jost Light */
+
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 200;
+  src: local('Jost'), url('./fonts/Jost/Jost-VariableFont_wght.ttf') format('truetype');
+}
+
+/* Jost Regular */
+
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Jost'), url('./fonts/Jost/Jost-VariableFont_wght.ttf') format('truetype');
+}
+
+/* Jost Semi-Bold */
+
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Jost'), url('./fonts/Jost/Jost-VariableFont_wght.ttf') format('truetype');
+}
+
+/* Jost Extra-Bold */
+
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 800;
+  src: local('Jost'), url('./fonts/Jost/Jost-VariableFont_wght.ttf') format('truetype');
+}
+
+/* Sen Regular */
+
+@font-face {
+  font-family: 'Sen';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Sen'), url('./fonts/Sen/Sen-VariableFont_wght.ttf') format('truetype');
+}
+
+/* Sen Semi-Bold */
+
+@font-face {
+  font-family: 'Sen';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Sen'), url('./fonts/Sen/Sen-VariableFont_wght.ttf') format('truetype');
+}
+
+/* Sen Extra-Bold */
+
+@font-face {
+  font-family: 'Sen';
+  font-style: normal;
+  font-weight: 800;
+  src: local('Sen'), url('./fonts/Sen/Sen-VariableFont_wght.ttf') format('truetype');
+}
+
+/* set up easy-to use universal classes for font styling */
+
+.font-jost {
+  font-family: 'Jost', 'Arial', sans-serif;
+}
+
+.font-sen {
+  font-family: 'Sen', Helvetica, sans-serif;
+}
+
+.weight-light {
+  font-weight: 200;
+}
+
+.weight-bold {
+  font-weight: 600;
+}
+
+.weight-extra-bold {
+  font-weight: 800;
+}
+
+/* base styling */
+
 body {
   margin: 0;
   min-height: 100%;
-
-  font-family: -apple-system, BlinkMacSystemFont, 'Arial', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: Helvetica, sans-serif;
 }
 
 code {
@@ -19,6 +103,8 @@ code {
 a {
   text-decoration: none;
 }
+
+/* custom classes */
 
 .animate-spin {
   transform-origin: 50% 60.2%;
