@@ -1,4 +1,5 @@
 import "./LandingPage.css";
+import { Link } from "react-router-dom";
 import LogoText from "../../images/text-gradient.png";
 import LogoImg from "../../images/logo-gradpurple.png";
 
@@ -24,7 +25,7 @@ export default function LandingPage() {
           and curate your profile within a vibrant and secure environment.
         </p>
         <p className="landing-text landing-action">
-          <a href="/developers">Discover our talents!</a>
+          <Link to="/developers">Discover our talents!</Link>
         </p>
       </div>
     </div>
