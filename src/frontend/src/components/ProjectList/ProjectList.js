@@ -1,6 +1,7 @@
 import "./ProjectList.css";
 import React, { useEffect, useState } from 'react';
-import { getAllProjects } from "../../api/projects.api";
+import { useLocation } from "react-router-dom";
+import {getFilteredProjectsBasic, getFilteredProjectsAdvanced, getAllProjects } from "../../api/projects.api";
 import { ProjectCard } from "../Card/Card";
 
 // import { ProjectCard } from "../Card/Card";
@@ -16,17 +17,29 @@ import { ProjectCard } from "../Card/Card";
 export default function ProjectList() {
 
   const [projects, setProjects] = useState([]);  
+  const location = useLocation();
+
   useEffect(() => {
+    if (location.search) {
+      const queryParams = new URLSearchParams(location.search);
+      const queryValue = queryParams.get('q');
+      getFilteredProjectsBasic(queryValue)
+        .then((response) => setProjects(response))
+        .catch(e => setProjects([]));
+    } else {
     getAllProjects()
-      .then((response) => setProjects(response.data))
+      .then((response) => setProjects(response))
       .catch((e) => setProjects([]));
-  }, []);
+  };
+  }, []
+  );
+console.log(projects)
 
   return (
     <div className="main">
       <p className="description">Discover the best projects</p>
       <div className="card-gallery">
-        {projects.map((project) =>
+       {projects.map((project) =>
           <ProjectCard
             project={project}
           />)
@@ -35,3 +48,4 @@ export default function ProjectList() {
     </div>
   );
 }
+
