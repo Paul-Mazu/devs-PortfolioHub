@@ -11,7 +11,7 @@ import LogoImg from "../../images/logo-gradpurple.png";
 
 export default function LandingPage() {
   return (
-    <div className="main">
+    <div className="main font-jost weight-bold">
       <div className="landing-header">
         <img className="landing-header-logo" src={LogoImg} alt="Logo"></img>
         <img className="landing-header-logo" src={LogoText} alt="Text Logo reading CoderVerse"></img>
