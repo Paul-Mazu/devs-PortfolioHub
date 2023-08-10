@@ -25,7 +25,7 @@ export default function DeveloperList() {
       getAllDevelopers()
         .then((response) => setDevelopers(response))
         .catch(e => setDevelopers([]));
-    }; 
+    };
   }, []
   );
 
@@ -33,11 +33,14 @@ export default function DeveloperList() {
     <div className="main">
       <p className="description">Discover the best developers</p>
       <div className="card-gallery">
-        {developers.map((developer) =>
-          <DeveloperCard
-            developer={developer}
-          />)
-        }
+        {developers.map((developer) => (
+          // this removes Pawel's currently empty superuser profile
+          developer.id !== 2 ? (
+            <DeveloperCard
+              developer={developer}
+            />
+          ) : null
+        ))}
       </div>
     </div>
   );
