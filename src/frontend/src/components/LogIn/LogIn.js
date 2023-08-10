@@ -19,8 +19,8 @@ export default function LogIn() {
     return (
         <div className="login-container text-center">
             <div className="form-card">
-                <h2>Log-In Form</h2>
-                <h3>Log into your account</h3>
+                <h2 className="font-jost weight-normal">Log-In Form</h2>
+                <h3 className="font-jost weight-normal">Log into your account</h3>
 
                 <div className="form-inputs">
                     <div className="input-field">
