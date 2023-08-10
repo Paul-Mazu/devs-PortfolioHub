@@ -9,7 +9,6 @@ import {
   NavbarLinkContainer,
   NavbarLink,
   ImgLogo,
-  TextLogo,
   OpenLinksButton,
   NavbarLinkExtended,
   RightOptions,
@@ -51,56 +50,60 @@ function Navbar() {
   const queryEntered = (e) => {
     setQuery(e.target.value);
     // buttonEnabled(username, password)
-}
+  }
 
   return (
     <NavbarContainer extendNavbar={extendNavbar}>
-      <NavbarInnerContainer>
-        <LeftContainer>
-          <NavbarLinkContainer>
-            <NavbarLink to="/">
-              <ImgLogo src={LogoImg}></ImgLogo>
-              <TextLogo src={LogoText}></TextLogo>
-            </NavbarLink>
-            {/* <RightOptions> */}
+      <div className="font-jost weight-bold">
+        <NavbarInnerContainer>
+          <LeftContainer>
+            <NavbarLinkContainer>
+              <NavbarLink to="/">
+                <div className="landing-header">
+                  <ImgLogo src={LogoImg}></ImgLogo>
+                  <ImgLogo src={LogoText}></ImgLogo>
+                </div>
+              </NavbarLink>
+              {/* <RightOptions> */}
               <NavbarLink to="/developers"> Developers</NavbarLink>
               <NavbarLink to="/projects"> Projects</NavbarLink>
-            {/* </RightOptions> */}
-            <OpenLinksButton
-              onClick={() => {
-                setExtendNavbar((curr) => !curr);
-              }}
-            >
-              {extendNavbar ? <>&#10005;</> : <> &#8801;</>}
-            </OpenLinksButton>
-          </NavbarLinkContainer>
-        </LeftContainer>
-        <RightContainer>
-          <NavbarSearchField onSubmit={searchDatabase}>
-            { location !== "projects" ? (
-              <NavbarSearchInput type="text" placeholder="Search developer by name or skill" value={query} onChange={e => queryEntered(e)}/>
+              {/* </RightOptions> */}
+              <OpenLinksButton
+                onClick={() => {
+                  setExtendNavbar((curr) => !curr);
+                }}
+              >
+                {extendNavbar ? <>&#10005;</> : <> &#8801;</>}
+              </OpenLinksButton>
+            </NavbarLinkContainer>
+          </LeftContainer>
+          <RightContainer>
+            <NavbarSearchField onSubmit={searchDatabase}>
+              {location !== "projects" ? (
+                <NavbarSearchInput type="text" placeholder="Search developer by name or skill" value={query} onChange={e => queryEntered(e)} />
               ) : (
-              <NavbarSearchInput type="text" placeholder="Search project by name, skill or author" value={query} onChange={e => queryEntered(e)}/>
+                <NavbarSearchInput type="text" placeholder="Search project by name, skill or author" value={query} onChange={e => queryEntered(e)} />
               )
               }
-          </NavbarSearchField>
-          {!activeUser &&
-            <NavbarLink to="/register"> Create profile</NavbarLink>
-          }
-          {!activeUser &&
-            <NavbarLink to="/login"> Sign in</NavbarLink>
-          }
-          {activeUser &&
-            <NavbarLink to="/profile"> Profile</NavbarLink>
-          }
-          {activeUser &&
-            <NavbarLink onClick={() => {
-              destroyToken();
-              window.location = "/";
-            }}> Sign out</NavbarLink>
-          }
-        </RightContainer>
-      </NavbarInnerContainer>
+            </NavbarSearchField>
+            {!activeUser &&
+              <NavbarLink to="/register"> Create profile</NavbarLink>
+            }
+            {!activeUser &&
+              <NavbarLink to="/login"> Sign in</NavbarLink>
+            }
+            {activeUser &&
+              <NavbarLink to="/profile"> Profile</NavbarLink>
+            }
+            {activeUser &&
+              <NavbarLink onClick={() => {
+                destroyToken();
+                window.location = "/";
+              }}> Sign out</NavbarLink>
+            }
+          </RightContainer>
+        </NavbarInnerContainer>
+      </div>
       {extendNavbar && (
         <NavbarExtendedContainer>
           <NavbarLinkExtended to="/developers"> Developers</NavbarLinkExtended>
