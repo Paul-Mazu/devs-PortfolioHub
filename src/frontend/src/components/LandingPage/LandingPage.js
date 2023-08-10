@@ -5,6 +5,10 @@ import LogoImg from "../../images/logo-gradpurple.png";
 // The landing page should contain a simple one-sentence pitch describing the web app, show the logo etc. 
 // and highlight the dev and project list
 
+// search devs or just simple button to /developers?
+// login element?
+// check login status to redirect/show different landing page?
+
 export default function LandingPage() {
   return (
     <div className="main">
