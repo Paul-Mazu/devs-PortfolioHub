@@ -80,9 +80,9 @@ function Navbar() {
           <RightContainer>
             <NavbarSearchField onSubmit={searchDatabase}>
               {location !== "projects" ? (
-                <NavbarSearchInput type="text" placeholder="Search developer by name or skill" value={query} onChange={e => queryEntered(e)} />
+                <NavbarSearchInput type="text" placeholder="Search developer by name or skill..." value={query} onChange={e => queryEntered(e)} />
               ) : (
-                <NavbarSearchInput type="text" placeholder="Search project by name, skill or author" value={query} onChange={e => queryEntered(e)} />
+                <NavbarSearchInput type="text" placeholder="Search project by name, skill or author..." value={query} onChange={e => queryEntered(e)} />
               )
               }
             </NavbarSearchField>
