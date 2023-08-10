@@ -31,16 +31,20 @@ export default function DeveloperList() {
 
   return (
     <div className="main">
-      <p className="description">Discover the best developers</p>
-      <div className="card-gallery">
-        {developers.map((developer) => (
-          // this removes Pawel's currently empty superuser profile
-          developer.id !== 2 ? (
-            <DeveloperCard
-              developer={developer}
-            />
-          ) : null
-        ))}
+      <div className="list-body">
+        <div className="list-heading">
+          <h2 className="font-jost">Discover the best developers<span className="highlight-cyan">!</span></h2>
+        </div>
+        <div className="card-gallery">
+          {developers.map((developer) => (
+            // this removes Pawel's currently empty superuser profile
+            developer.id !== 2 ? (
+              <DeveloperCard
+                developer={developer}
+              />
+            ) : null
+          ))}
+        </div>
       </div>
     </div>
   );
