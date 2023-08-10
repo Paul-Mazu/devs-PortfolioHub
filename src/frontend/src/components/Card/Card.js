@@ -56,23 +56,24 @@ export function DeveloperCard({ developer }) {
   return (
     // for now: developers/:id to make profiles accessible through URL and give option to bookmark them
     // <Link to={"/developers/" + slugify(developer.name)} state={{userId: developer.id}}>
-    <Link to={"/developers/" + developer.id }>
-      <div className="card-main">
+    <div className="card-main">
+      <Link to={"/developers/" + developer.id}>
         <div className="card-header">
           <img className={"card-dev-pic " + developer.status_open_to_work} src={checkImageUrl(developer.profile_image)} alt="Developer profile"></img>
           <div className="card-header-titles">
-            <h2 className="card-title">{developer.name}</h2>
-            <h3 className="card-title">{checkPosition(developer)}</h3>
-            <div className="tag-list">
+            <h2 className="card-title font-jost weight-semi-bold">{developer.name}</h2>
+            <h3 className="card-title font-jost weight-normal">{checkPosition(developer)}</h3>
+            <div className="tag-list font-sen weight-semi-bold">
               {listTags}
             </div>
           </div>
         </div>
+        <hr className="card-break"></hr>
         <div className="card-body">
-          <p className="card-text">{developer.short_desc}</p>
+          <p className="card-text font-sen weight-semi-bold">{developer.short_desc}</p>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 }
 
@@ -89,7 +90,7 @@ export function ProjectCard({ project }) {
   };
   const projectName = project.name;
   const projectAuthor = project.author.name;
-  
+
 
   const tags = project.tags;
   const listTags = tags.map((d, idx) => (
