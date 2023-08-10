@@ -48,6 +48,18 @@
     border: 5px solid transparent;
 }
 
+.card-project-pic {
+    position: absolute;
+    top: 0px;
+    width: 100px;
+    height: 100px;
+    border-radius: 30px;
+    overflow: hidden;
+    object-fit: cover;
+    margin-right: 20px;
+    border: 5px solid #0C0910;
+}
+
 .card-header-titles {
     position: absolute;
     left: 125px;
