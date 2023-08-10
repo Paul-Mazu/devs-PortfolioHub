@@ -4,6 +4,16 @@ import axios from "axios";
 
 const BASE_URL = "http://35.204.79.162/"
 
+export async function getAllProjects() {
+    try {
+        let foundProjects = await axios.get(BASE_URL + "api/project/projects/", { withCredentials: true });
+        console.log(foundProjects)
+        return foundProjects.data;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 // filtered project search: basic version can only receive a single term and look for matches in relevant fields
 
 export async function getFilteredProjectsBasic (query) {
@@ -19,8 +29,7 @@ export async function getFilteredProjectsBasic (query) {
     }
 };
 
-// filtered project search: advanced version matches against several parameters at once
-
+//filtered project search: advanced version matches against several parameters at once
 export async function getFilteredProjectsAdvanced (name, tags, author) {
     try {        
         let foundProjects = await axios.get(BASE_URL + "api/project/projects/", {params: {name: name, tags: tags, author: author}}, { withCredentials: true });
