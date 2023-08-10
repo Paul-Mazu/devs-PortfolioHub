@@ -1,0 +1,14 @@
+.login-container {
+    position: absolute;
+    top: 200px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-card {
+    /* z-index: -1; */
+    padding: 20px;
+    background: rgba(214, 214, 214, 0.413);
+}

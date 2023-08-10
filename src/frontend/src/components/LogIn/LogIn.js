@@ -17,7 +17,7 @@ export default function LogIn() {
     }
 
     return (
-        <div className="login-container">
+        <div className="login-container text-center">
             <div className="form-card">
                 <h2>Log-In Form</h2>
                 <h3>Log into your account</h3>
