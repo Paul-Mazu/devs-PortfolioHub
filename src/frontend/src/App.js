@@ -10,26 +10,34 @@ import MyProfile from "./components/MyProfile/MyProfile";
 import MyProfileEditForm from "./components/MyProfileEditForm/MyProfileEditForm";
 import DeveloperProfile from "./components/DeveloperProfile/DeveloperProfile";
 import Footer from "./components/Footer/Footer";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <HeroImage />
-        <Navbar />
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="developers" element={<DeveloperList />} />
-          <Route path="developers/:id" element={<DeveloperProfile />} />
-          <Route path="projects" element={<ProjectList />} />
-          <Route path="register" element={<RegistrationForm />} />
-          <Route path="login" element={<LogInForm />} />
-          <Route path="profile" element={<MyProfile />} />
-          <Route path="profile/edit" element={<MyProfileEditForm />} />
+          <Route
+            element={(
+              <>
+                <Navbar />
+                <Outlet />
+                <Footer />
+              </>
+            )}
+          >
+            <Route path="developers" element={<DeveloperList />} />
+            <Route path="developers/:id" element={<DeveloperProfile />} />
+            <Route path="projects" element={<ProjectList />} />
+            <Route path="register" element={<RegistrationForm />} />
+            <Route path="login" element={<LogInForm />} />
+            <Route path="profile" element={<MyProfile />} />
+            <Route path="profile/edit" element={<MyProfileEditForm />} />
+          </Route>
         </Routes>
       </BrowserRouter>
-      <Footer />
     </div>
   );
 }

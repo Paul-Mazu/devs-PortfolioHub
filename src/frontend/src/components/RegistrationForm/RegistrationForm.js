@@ -27,10 +27,10 @@ export default function RegistrationForm() {
     // should also contain various validation functions for email, password and the form itself
 
     return (
-        <div className="registration-container">
+        <div className="registration-container text-center">
             <div className="form-card">
-                <h2>Registration Form</h2>
-                <h3>Register to create a profile and curate your own portfolio</h3>
+                <h2 className="font-jost weight-normal">Registration Form</h2>
+                <h3 className="font-jost weight-normal">Register to create a profile and curate your own portfolio</h3>
 
                 <div className="form-inputs">
                     <div className="input-field">

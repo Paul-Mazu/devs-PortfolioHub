@@ -1,7 +1,29 @@
+.list-body{
+    width: 95vw;
+    align-self: center;
+    background: #060c2a;
+    border-radius: 50px;
+    padding: 30px;
+    margin: 0 0 25px;
+}
+
+.list-heading {
+    color: #F26DF9;
+    align-items: flex-end;
+}
+
+.list-heading > h2 {
+    margin: 0px;
+    padding: 0px;
+    font-size: 5rem;
+    line-height: 5rem;
+}
+
 .card-gallery {
     display:flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
+    margin: 20px 0 0;
+    justify-content: left;
+    gap: 35px 45px;
 }

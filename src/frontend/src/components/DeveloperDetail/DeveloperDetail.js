@@ -1,4 +1,5 @@
 import "./DeveloperDetail.css";
+import { Link } from 'react-router-dom';
 import placeholderImage from "../../images/Drawing.png";
 
 
@@ -54,43 +55,60 @@ export default function DeveloperDetail({ developer, isUser }) {
   }
 
   const tags = developer.tags;
-  const listTags = tags.map((d, idx) => <h3 className="tag" key={idx}>{d.name}</h3>);
+  const listTags = tags.map((d, idx) => <h3 className="detail-tag" key={idx}>{d.name}</h3>);
 
   return (
-    <div className="container-main">
-      {isUser === true &&
-        <div>
-          <p className="description">Welcome to your profile, {developer.name}</p>
-          <a href="/profile/edit">Edit your profile</a>
-          <a href="/">Add a project</a>
+    <div className="main">
+      <div className="detail-body">
+        {isUser === true &&
+          <div>
+            <div className="detail-heading font-jost">
+              <h2 className="">Welcome to your profile, <span className="highlight-cyan">{developer.name}</span>!</h2>
+              <div className="detail-links">
+                <Link className="weight-extra-bold" to="/profile/edit">Edit your profile</Link>
+                <Link className="weight-extra-bold" to="/">Add a project</Link>
+              </div>
+            </div>
+          </div>
+        }
+        {isUser === false &&
+          <div className="detail-heading font-jost">
+            <h2 className="">Welcome to <span className="highlight-cyan">{developer.name}</span>'s profile!</h2>
+          </div>
+        }
+        <div className="detail-header">
+          <img className={"detail-dev-pic " + developer.status_open_to_work} src={checkImageUrl(developer.profile_image)} alt="Developer profile"></img>
+          <div className="detail-info">
+            <h2 className="font-jost weight-normal">Hi, my name's <span className="highlight-cyan">{developer.name}</span>.</h2>
+            <h3 className="font-jost weight-normal">I'm a <span className="highlight-cyan">{checkPosition(developer)}</span>!</h3>
+            <p className="font-sen weight-extra-bold">{developer.short_desc}</p>
+          </div>
         </div>
-      }
-      {isUser === false &&
-        <p className="description">Welcome to {developer.name}'s profile</p>
-      }
-      <img className={"profile-dev-pic " + developer.status_open_to_work} src={checkImageUrl(developer.profile_image)} alt="Developer profile"></img>
-      <h2>Name: {developer.name}</h2>
-      <h2>Email: {developer.email}</h2>
-      <h3>Position: {checkPosition(developer)}</h3>
-      <h3>Short Description: {developer.short_desc}</h3>
-      <h3>{listTags}</h3>
-      <p>Bio: {developer.bio}</p>
-      <p>Highlighted Projects: </p>
-      <a>See all Projects by {developer.name}</a>
-      {(developer.github_link || developer.linkedin_link || developer.website_link) &&
-        <p>Socials: </p>
-      }
-      <ul>
-        {developer.github_link &&
-          <li>{developer.github_link}</li>
+        <div className="detail-tags font-sen weight-semi-bold">{listTags}</div>
+        <div className="detail-bio font-sen weight-bold">
+          <p>{developer.bio}</p>
+        </div>
+        <div className="detail-projects">
+          <p>Highlighted Projects: </p>
+          <a>See all Projects by {developer.name}</a>
+        </div>
+        {(developer.github_link || developer.linkedin_link || developer.website_link) &&
+          <div className="detail-socials">
+            <p>Socials: </p>
+            <ul>
+              {developer.github_link &&
+                <li>{developer.github_link}</li>
+              }
+              {developer.linkedin_link &&
+                <li>{developer.linkedin_link}</li>
+              }
+              {developer.website_link &&
+                <li>{developer.website_link}</li>
+              }
+            </ul>
+          </div>
         }
-        {developer.linkedin_link &&
-        <li>{developer.linkedin_link}</li>        
-        }
-        {developer.website_link &&
-        <li>{developer.website_link}</li>        
-        }
-      </ul>
+      </div>
     </div>
   );
 }

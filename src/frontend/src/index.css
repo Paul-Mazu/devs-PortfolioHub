@@ -1,16 +1,106 @@
 /* This Stylesheet houses styles that are reused across all components */
 
+/* import local fonts by declaring font-faces for relevant weights */
+
+/* Jost Light */
+
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 200;
+  src: local('Jost'), url('./fonts/Jost/Jost-VariableFont_wght.ttf') format('truetype');
+}
+
+/* Jost Regular */
+
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Jost'), url('./fonts/Jost/Jost-VariableFont_wght.ttf') format('truetype');
+}
+
+/* Jost Semi-Bold */
+
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Jost'), url('./fonts/Jost/Jost-VariableFont_wght.ttf') format('truetype');
+}
+
+/* Jost Extra-Bold */
+
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 800;
+  src: local('Jost'), url('./fonts/Jost/Jost-VariableFont_wght.ttf') format('truetype');
+}
+
+/* Sen Regular */
+
+@font-face {
+  font-family: 'Sen';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Sen'), url('./fonts/Sen/Sen-VariableFont_wght.ttf') format('truetype');
+}
+
+/* Sen Semi-Bold */
+
+@font-face {
+  font-family: 'Sen';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Sen'), url('./fonts/Sen/Sen-VariableFont_wght.ttf') format('truetype');
+}
+
+/* Sen Extra-Bold */
+
+@font-face {
+  font-family: 'Sen';
+  font-style: normal;
+  font-weight: 800;
+  src: local('Sen'), url('./fonts/Sen/Sen-VariableFont_wght.ttf') format('truetype');
+}
+
+/* set up easy-to use universal classes for font styling */
+
+.font-jost {
+  font-family: 'Jost', 'Arial', sans-serif;
+}
+
+.font-sen {
+  font-family: 'Sen', Helvetica, sans-serif;
+}
+
+.weight-light {
+  font-weight: 200;
+}
+
+.weight-normal {
+  font-weight: 400;
+}
+
+.weight-light {
+  font-weight: 200;
+}
+
+.weight-bold {
+  font-weight: 600;
+}
+
+.weight-extra-bold {
+  font-weight: 800;
+}
+
+/* base styling */
+
 body {
   margin: 0;
   min-height: 100%;
-
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  
-  /* background: linear-gradient(90.2deg, rgba(190, 70, 102, 0.93) -15.6%, rgb(252, 154, 154) -15.6%, rgba(190, 70, 102, 0.92) 17.9%, rgb(58, 13, 48) 81.6%); */
+  font-family: Helvetica, sans-serif;
 }
 
 code {
@@ -18,16 +108,61 @@ code {
     monospace;
 }
 
-.discription {
-  font-size: 150px;
-  color: greenyellow;
+a {
+  text-decoration: none;
+}
+
+/* custom classes */
+
+.animate-spin {
+  transform-origin: 50% 60.2%;
+  animation: rotation 18s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+      transform: rotate(0deg);
+      opacity: 100%;
+  }
+  10% {
+      opacity: 80%;
+  }
+  30% {
+      opacity: 100%;
+  }
+  50% {
+      opacity: 70%;
+  }
+  50% {
+      opacity: 80%;
+  }
+  75% {
+      opacity: 60%;
+  }
+  to {
+      transform: rotate(360deg);
+      opacity: 100%;
+  }
 }
 
 .main {
-  position: absolute;
-  top: 150px;
-  text-align: center;
+  position: absolute; 
+  top: 50px;
   width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.highlight-cyan {
+  color: #75F4F4;
+}
+
+.highlight-purple {
+  color: #5431A0;
 }
 
 /* Debugging class can be assigned during development to help visualising elements that are being worked on */

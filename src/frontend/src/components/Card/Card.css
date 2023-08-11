@@ -1,19 +1,22 @@
-a {
-    text-decoration: none;
-    color: black;
-}
-
 .card-main {
     box-sizing: border-box;
-    background-color: #F0F6F6;
+    background: #f0f6f6;
+    color: #0C0910;    
     min-width: 325px;
     width: 30vw;
     min-height: 250px;
     height: 20vh;
-    margin: 20px;
     padding: 10px;
     text-align: left;
-    border-radius: 5px;
+    border-radius: 35px;
+    transition: all .5s ease-in-out;
+}
+
+.card-main:hover {
+    box-shadow: 0 0 10px 3px #9470e7;
+}
+
+.card-main > a {
     color: #0C0910;
 }
 
@@ -23,6 +26,7 @@ a {
     position: relative;
     top: 0px;
     left: 0px;
+    height: 110px;
 }
 
 .card-dev-pic {
@@ -44,30 +48,44 @@ a {
     border: 5px solid transparent;
 }
 
-.card-header-titles {
+.card-project-pic {
     position: absolute;
     top: 0px;
+    width: 100px;
+    height: 100px;
+    border-radius: 30px;
+    overflow: hidden;
+    object-fit: cover;
+    margin-right: 20px;
+    border: 5px solid #0C0910;
+}
+
+.card-header-titles {
+    position: absolute;
     left: 125px;
 }
 
 .card-title {
-    margin: 0 0 .5rem;
+    font-size: 1.5rem;
+    line-height: 1.8rem;
+    margin: 0rem;
     padding: 0;
     flex-basis: 100%;
 }
 
 .tag-list {
+    margin-top: 10px;
     display: flex;
     flex-wrap: wrap;
-    color: white;
     align-items: center;
     position: relative;
     left: -5px;
 }
 
 .tag {
+    color: #f0f6f6;
     border-radius: 15px / 50%;
-    background-color: rgb(124, 124, 124);
+    background-color: #554084;
     margin: 0 5px;
     padding: 0.5rem;
     height: 1.2rem;
@@ -76,8 +94,23 @@ a {
     text-align: center;
 }
 
+.card-break {
+    position: relative;
+    border: none;
+    background: linear-gradient(90deg, #00000000 5%, #5431A0, #00000000 95%);
+    min-width: 325px;
+    height: 2px;
+}
+
+.card-body {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    height: 42.5%;
+    margin: auto;
+}
+
 .card-text {
-background-color: blueviolet;
-
-
+    text-align: justify;
+    font-size: 17px;
 }
