@@ -26,37 +26,49 @@ __CoderVerse__ is a full-stack webapp that serves as a social hub for developers
 
 ## Prototype
 
-_Video/gif demonstration of the user flow._
+We have dockerized and deployed our [APIs](http://35.204.79.162/api/docs/).
 
-_[Link to the deployed APIs](http://35.204.79.162/api/docs/)_
+### User Flow Demonstrations
+
+__Landing page and developer overview and search:__
+
+![Demo Landing](documents/cv-1.gif)
+
+__User login and developer details page:__
+
+![Demo Landing](documents/cv-2.gif)
 
 ## Setup
 
-_Description of how to locally set up the repository in case that people want to clone into it._
+As our APIs are currently deployed, only the frontend needs to be started up locally.
 
-### Setting Up The Correct .env File:
+Please run the following commands from your command line to clone into the repository and run the React frontend application.
 
-_General description of what kind of information is needed in the .env file. Kind note to please contact the creators directly to receive the necessary data._
+### Clone and navigate to the Git repository:
 
-### Python Install:
+```bash
+git clone https://github.com/Paul-Mazu/devs-PortfolioHub.git
 
-_Links to Python Install documentation for Windows/Mac/Linux, note on Python version(s) used by the team._
+cd devs-PortfolioHub
+```
 
-### Clone Into The Git Repository:
+### Navigate to the frontend folder:
 
-_How to clone into the repository._
+```bash
+cd src/frontend
+```
 
-### Creating a venv:
+### Install necessary dependencies:
 
-_How to create a venv for the project._
+```bash
+npm i
+```
 
-### Installing Necessary Dependencies:
+### Run the project locally:
 
-_How to install modules from requirements.txt._
-
-### Running the project locally:
-
-_Instructions on how to start up a Django project locally._
+```bash
+npm start
+```
 
 ## Technologies Used
 
@@ -64,20 +76,20 @@ _Instructions on how to start up a Django project locally._
 * Back-end: Python, Django, Django Rest Framework, Docker
 * Documentation: DRF Spectacular, Swagger
 * Authentication: JSON Web Tokens (JWT)
+* Organization: Slack and Atlassian
 
 ## Authors
 
-[Aljoscha Beiers](https://github.com/alj-b) 
+[Aljoscha Beiers](https://github.com/alj-b) ([LinkedIn](https://www.linkedin.com/in/aljoscha-beiers/))
 
-[Pawel Mazurkiewicz](https://paul-mazu.github.io/portfolio/)  
-[LinkedIn](https://www.linkedin.com/in/pawel-mazurkiewicz-906877173/)
+[Pawel Mazurkiewicz](https://paul-mazu.github.io/portfolio/)  ([LinkedIn](https://www.linkedin.com/in/pawel-mazurkiewicz-906877173/))
 
-[Christopher Odum](https://github.com/VirgSam) 
+[Christopher Odum](https://github.com/VirgSam) ([LinkedIn](https://www.linkedin.com/in/christopher-odum-95577319/))
 
-[Emre Sandikcioglu](https://github.com/EmreSand) 
+[Emre Sandikcioglu](https://github.com/EmreSand) ([LinkedIn](https://www.linkedin.com/in/emre-sandikcioglu-a83312129/)) 
 
-[Maryna Solovarova](https://github.com/marynaSolovarova) 
+[Maryna Solovarova](https://github.com/marynaSolovarova) ([LinkedIn](https://www.linkedin.com/in/marynasolovarova/)) 
 
 ## Special Thanks
  
-_We want to thank the DCI, and in particular our teachers and mentors - Piet, Mason and Jaman._
+We want to thank the DCI, and in particular our teachers and mentors - Piet, Mason and Jaman.
