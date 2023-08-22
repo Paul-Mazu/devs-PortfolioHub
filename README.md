@@ -1,7 +1,7 @@
 <div align="center">
 
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/Paul-Mazu/devs-PortfolioHub?color=1d7147&style=for-the-badge)
-![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/Paul-Mazu/devs-PortfolioHub?color=EAE6B4&style=for-the-badge) ![GitHub milestones](https://img.shields.io/github/milestones/all/Paul-Mazu/devs-PortfolioHub?color=F2F2F2&style=for-the-badge) ![GitHub language count](https://img.shields.io/github/languages/count/Paul-Mazu/devs-PortfolioHub?color=62B096&style=for-the-badge)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/t/Paul-Mazu/devs-PortfolioHub?color=1d7147&style=for-the-badge)
+![GitHub language count](https://img.shields.io/github/languages/count/Paul-Mazu/devs-PortfolioHub?color=62B096&style=for-the-badge)
 </div>
 
 <div align="center">
@@ -14,21 +14,21 @@
 
 <br>
 
-# devs-PortfolioHub
+# CoderVerse
 
-A portfolio hub for devs by devs, built in Django. This project is part of the Digital Career Institute's FBW P22-E03 cohort.
+A portfolio hub for devs by devs, built in Django and React.js. This project is part of the Digital Career Institute's FBW P22-E03 cohort.
 
 <br>
 
 ## About
 
-__portfolio\_page__ is a full-stack webapp that serves as a social hub for developers. Add your profile, your skills and favorite projects and find like-minded individuals across the world.
+__CoderVerse__ is a full-stack webapp that serves as a social hub for developers. Add your profile, your skills and favorite projects and find like-minded individuals across the world.
 
 ## Prototype
 
 _Video/gif demonstration of the user flow._
 
-_[Link to the deployed project.](https://github.com/)_
+_[Link to the deployed APIs](http://35.204.79.162/api/docs/)_
 
 ## Setup
 
@@ -60,8 +60,8 @@ _Instructions on how to start up a Django project locally._
 
 ## Technologies Used
 
-* Front-end: HTML, CSS, JavaScript, React
-* Back-end: Python, Django, Django Rest Framework, Docker, 
+* Front-end: HTML, CSS, JavaScript, Node, React
+* Back-end: Python, Django, Django Rest Framework, Docker
 * Documentation: DRF Spectacular, Swagger
 * Authentication: JSON Web Tokens (JWT)
 
@@ -80,4 +80,4 @@ _Instructions on how to start up a Django project locally._
 
 ## Special Thanks
  
-_Thank DCI, teachers and mentors - Piet, Mason, Jaman._
+_We want to thank the DCI, and in particular our teachers and mentors - Piet, Mason and Jaman._
