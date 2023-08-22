@@ -1,7 +1,7 @@
 <div align="center">
 
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/Paul-Mazu/devs-PortfolioHub?color=1d7147&style=for-the-badge)
-![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/Paul-Mazu/devs-PortfolioHub?color=EAE6B4&style=for-the-badge) ![GitHub milestones](https://img.shields.io/github/milestones/all/Paul-Mazu/devs-PortfolioHub?color=F2F2F2&style=for-the-badge) ![GitHub language count](https://img.shields.io/github/languages/count/Paul-Mazu/devs-PortfolioHub?color=62B096&style=for-the-badge)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/t/Paul-Mazu/devs-PortfolioHub?color=1d7147&style=for-the-badge)
+![GitHub language count](https://img.shields.io/github/languages/count/Paul-Mazu/devs-PortfolioHub?color=62B096&style=for-the-badge)
 </div>
 
 <div align="center">
@@ -14,70 +14,82 @@
 
 <br>
 
-# devs-PortfolioHub
+# CoderVerse
 
-A portfolio hub for devs by devs, built in Django. This project is part of the Digital Career Institute's FBW P22-E03 cohort.
+A portfolio hub for devs by devs, built in Django and React.js. This project is part of the Digital Career Institute's FBW P22-E03 cohort.
 
 <br>
 
 ## About
 
-__portfolio\_page__ is a full-stack webapp that serves as a social hub for developers. Add your profile, your skills and favorite projects and find like-minded individuals across the world.
+__CoderVerse__ is a full-stack webapp that serves as a social hub for developers. Add your profile, your skills and favorite projects and find like-minded individuals across the world.
 
 ## Prototype
 
-_Video/gif demonstration of the user flow._
+We have dockerized and deployed our [APIs](http://35.204.79.162/api/docs/).
 
-_[Link to the deployed project.](https://github.com/)_
+### User Flow Demonstrations
+
+__Landing page and developer overview and search:__
+
+![Demo Landing](documents/cv-1.gif)
+
+__User login and developer details page:__
+
+![Demo Landing](documents/cv-2.gif)
 
 ## Setup
 
-_Description of how to locally set up the repository in case that people want to clone into it._
+As our APIs are currently deployed, only the frontend needs to be started up locally.
 
-### Setting Up The Correct .env File:
+Please run the following commands from your command line to clone into the repository and run the React frontend application.
 
-_General description of what kind of information is needed in the .env file. Kind note to please contact the creators directly to receive the necessary data._
+### Clone and navigate to the Git repository:
 
-### Python Install:
+```bash
+git clone https://github.com/Paul-Mazu/devs-PortfolioHub.git
 
-_Links to Python Install documentation for Windows/Mac/Linux, note on Python version(s) used by the team._
+cd devs-PortfolioHub
+```
 
-### Clone Into The Git Repository:
+### Navigate to the frontend folder:
 
-_How to clone into the repository._
+```bash
+cd src/frontend
+```
 
-### Creating a venv:
+### Install necessary dependencies:
 
-_How to create a venv for the project._
+```bash
+npm i
+```
 
-### Installing Necessary Dependencies:
+### Run the project locally:
 
-_How to install modules from requirements.txt._
-
-### Running the project locally:
-
-_Instructions on how to start up a Django project locally._
+```bash
+npm start
+```
 
 ## Technologies Used
 
-* Front-end: HTML, CSS, JavaScript, React
-* Back-end: Python, Django, Django Rest Framework, Docker, 
+* Front-end: HTML, CSS, JavaScript, Node, React
+* Back-end: Python, Django, Django Rest Framework, Docker
 * Documentation: DRF Spectacular, Swagger
 * Authentication: JSON Web Tokens (JWT)
+* Organization: Slack and Atlassian
 
 ## Authors
 
-[Aljoscha Beiers](https://github.com/alj-b) 
+[Aljoscha Beiers](https://github.com/alj-b) ([LinkedIn](https://www.linkedin.com/in/aljoscha-beiers/))
 
-[Pawel Mazurkiewicz](https://paul-mazu.github.io/portfolio/)  
-[LinkedIn](https://www.linkedin.com/in/pawel-mazurkiewicz-906877173/)
+[Pawel Mazurkiewicz](https://paul-mazu.github.io/portfolio/)  ([LinkedIn](https://www.linkedin.com/in/pawel-mazurkiewicz-906877173/))
 
-[Christopher Odum](https://github.com/VirgSam) 
+[Christopher Odum](https://github.com/VirgSam) ([LinkedIn](https://www.linkedin.com/in/christopher-odum-95577319/))
 
-[Emre Sandikcioglu](https://github.com/EmreSand) 
+[Emre Sandikcioglu](https://github.com/EmreSand) ([LinkedIn](https://www.linkedin.com/in/emre-sandikcioglu-a83312129/)) 
 
-[Maryna Solovarova](https://github.com/marynaSolovarova) 
+[Maryna Solovarova](https://github.com/marynaSolovarova) ([LinkedIn](https://www.linkedin.com/in/marynasolovarova/)) 
 
 ## Special Thanks
  
-_Thank DCI, teachers and mentors - Piet, Mason, Jaman._
+We want to thank the DCI, and in particular our teachers and mentors - Piet, Mason and Jaman.
